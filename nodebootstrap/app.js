@@ -17,7 +17,7 @@ var reqAPI = require('./routes/reqAPI');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 2222);
+app.set('port', process.env.PORT || 2223);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -47,29 +47,44 @@ http.createServer(app).listen(app.get('port'), function(){
 
 
 
-function callAlch(req,res){
+function callAlch(req,resp){
+
+	var URL = req.body.urlin
 
 	console.log("call Alch called");
 
-	var http = require('http');
-
 	var options = {
 	  host: 'access.alchemyapi.com',
-	  path: '/calls/url/URLGetTargetedSentiment/',
-	  url: 'http://www.cnn.com/2013/11/24/world/meast/iran-israel/index.html',
-	  apikey: '2094dd01lkm;k7e1bb916840e40e81f25d16f',
-	  outputMode: 'xml',
-	  target: 'guns'
+	  path: '/calls/url/URLGetRankedNamedEntities?outputMode=json&apikey=2094dd01fd7cbceb7e1bb916840e40e81f25d16f&sentiment=1&linkedData=1&url='+URL,
+
 	};
 
-	http.get(options, function(resp){
+	var jsonResp = '';
 
-	  resp.on('data', function(chunk){
-		console.log(resp);
+	var req = http.request(options, function(res) {
+
+	  res.on('end',function(){console.log(jsonResp)});
+
+	  res.setEncoding('utf8');
+
+	  res.on('data', function (chunk) {
+	  	jsonResp += chunk;
 	  });
-	}).on("error", function(e){
-	  console.log("Got error: " + e.message);
 	});
+
+	req.on('error', function(e) {
+	  console.log('problem with request: ' + e.message);
+	});
+
+
+
+	// write data to request body
+	req.write('data\n');
+	req.write('data\n');
+	req.end();
+
+	
+
 }
 
 
