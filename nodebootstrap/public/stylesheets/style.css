@@ -1,0 +1,34 @@
+body {
+  padding: 50px;
+}
+
+#mainSec  {
+  overflow:hidden;
+  height: 600px;
+} 
+
+#panelLeft {
+  width: 30%;
+  float: left;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-right: solid #00000a 2px;
+}
+
+#panelRight {
+  float: right;
+  width: 65%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.red .active a,
+.red .active a:hover {
+  background-color:red;
+}
+
+#tile {
+  width: 90%;
+}

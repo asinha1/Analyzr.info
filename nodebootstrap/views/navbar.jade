@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div.navbar.navbar-inverse.navbar-fixed-top
+    div.navbar-inner
+      div.container
+        button(type="button", data-toggle="collapse", data-target=".nav-collapse").btn.btn-navbar
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a(href = "").brand UnBias.Me
+        div.nav-collapse.collapse
+          ul.nav
+            if (checkPage === 'about')
+              li.active
+                a(href="about") About
+            else
+              li
+                a(href="about") About
+            if (checkPage === 'contact')
+              li.active
+                a(href="contact") Contact
+            else
+              li
+                a(href="contact") Contact
+  div(id="mainSec").container
+    block mainpart
