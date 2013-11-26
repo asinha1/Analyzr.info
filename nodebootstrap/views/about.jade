@@ -8,12 +8,12 @@ block rightText
        | Click an article on the left to start.
 
 
-  
-  form(name="getUrl", action="/reqAPI", align="center", onsubmit="######", method="post")
+   form(name="getUrl", align="center", method="post", action="/", onsubmit="return linkRequest();")
     key URL
-      input(type="text", name="urlin")
+      input(type="text", name="urlin", id="1")
 
     input(type="submit", value="Submit")
+
 
 
 

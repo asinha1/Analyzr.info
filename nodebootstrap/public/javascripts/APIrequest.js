@@ -1,21 +1,25 @@
-//alert("bout to start");
+
 var request = require('request');
 var XMLHttpRequest = require("XMLHttpRequest");
-//alert("start 1");
+
+//Do i need this?
+
 //var http = require("http");
-//alert("start 2");
+
 var mongoose = require("mongoose");
-//alert("step 3");
+
 var mongoose = require('mongoose');
-//alert("fucking pass already");
-mongoose.connect('ec2-54-200-60-55.us-west-2.compute.amazonaws.com/news');
-//alert("step 4");
+
+
+//mongoose.connect('ec2-54-200-60-55.us-west-2.compute.amazonaws.com/news'); This was old server
+mongoose.connect('ec2-54-201-115-172.us-west-2.compute.amazonaws.com');
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
    console.log("Connected");
 });
-//alert("lets begin");
+
 // var newsSchema = mongoose.Schema({
 //         link : String,
 //         bias : Number,
