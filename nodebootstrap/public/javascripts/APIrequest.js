@@ -1,15 +1,9 @@
-
 var request = require('request');
 var XMLHttpRequest = require("XMLHttpRequest");
 
-//Do i need this?
-
-//var http = require("http");
+var http = require("http");
 
 var mongoose = require("mongoose");
-
-var mongoose = require('mongoose');
-
 
 //mongoose.connect('ec2-54-200-60-55.us-west-2.compute.amazonaws.com/news'); This was old server
 mongoose.connect('ec2-54-201-115-172.us-west-2.compute.amazonaws.com');
@@ -20,11 +14,11 @@ db.once('open', function callback () {
    console.log("Connected");
 });
 
-// var newsSchema = mongoose.Schema({
-//         link : String,
-//         bias : Number,
-//         lean : String
-// });
+var newsSchema = mongoose.Schema({
+        link : String,
+        bias : Number,
+        lean : String
+});
 
 
 var summary = mongoose.model'(Summary',newsSchema);
