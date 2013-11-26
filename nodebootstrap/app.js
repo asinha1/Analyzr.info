@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -19,21 +18,32 @@ var request = require('request');
 var mongoose = require("mongoose");
 
 /* Connect to mongodb on Aashish's AWS */ 
-mongoose.connect('ec2-54-201-115-172.us-west-2.compute.amazonaws.com');
+mongoose.connect('mongodb://ec2-54-201-115-172.us-west-2.compute.amazonaws.com/testStuff');
 var db = mongoose.connection;
+
 /* Error handler */
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
    console.log("Connected");
 });
 
-var newsSchema = mongoose.Schema({
+// Schema for now is a simple tuple of the URL and the author (which i will just make up)
+var Schema = mongoose.Schema;
+var tempSchema = new Schema({
         link : String,
-        bias : Number,
-        lean : String
+        author : String
 });
 
-var summary = mongoose.model('Summary',newsSchema);
+/* This function will do a console log to test the Schema vailidity */
+tempSchema.methods.printToConsole = function() {
+ var address = this.link ? "URL is: " + this.link : "No URL";
+ console.log(address);
+ var writer = this.author ? "Author is: " + this.author : "No Author";
+ console.log(writer);
+ 
+}
+
+var tempModel = mongoose.model('tempModel',tempSchema);
 
 
 var app = express();
@@ -77,18 +87,24 @@ http.createServer(app).listen(app.get('port'),
 function callAlch(req,resp){
 
     //get URL from submitted form
-    var URL = req.body.urlin
+    var URL = req.body.data;
 
     console.log("callAlch called with "+URL);
 
-
-
-
-
-
+    /* Create new mongoose model to hold data */
+    var userInput = new tempModel({link : URL, author: "Aashish Sinha"});
+    userInput.printToConsole();  // Check if console logs anything
+    
+    /* Store in mongodb */
+    userInput.save(function(err) { 
+      if(err) {
+        console.log("errored out"); 
+        return;
+      }
+    });
 
     //////////dont touch below this line////////////
-    return;
+    //return;
 
     var options = {
        host: 'access.alchemyapi.com',
@@ -106,7 +122,7 @@ function callAlch(req,resp){
            console.log(jsonResp);
 
            resp.send(jsonResp);
-           resp.render('about', { title: 'UnBias.Me', checkPage: 'about' });
+           //resp.render('about', { title: 'UnBias.Me', checkPage: 'about' });
            //linkRequest(jsonResp);
        });
 
