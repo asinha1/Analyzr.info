@@ -91,7 +91,7 @@ function callAlch(req,resp){
 
     console.log("callAlch called with "+URL);
 
-    Person.find({ link : URL }, function (err, dbjson) {
+    tempModel.find({ link : URL }, function (err, dbjson) {
   if (err) {
     console.log("Could not find the link");
     
