@@ -91,6 +91,10 @@ function callAlch(req,resp){
 
     console.log("callAlch called with "+URL);
 
+    Person.find({ link : URL }, function (err, dbjson) {
+  if (err) {
+    console.log("Could not find the link");
+    
     /* Create new mongoose model to hold data */
     var userInput = new tempModel({link : URL, author: "Aashish Sinha"});
     userInput.printToConsole();  // Check if console logs anything
@@ -102,9 +106,17 @@ function callAlch(req,resp){
         return;
       }
     });
-
+    resp.send(URL);
+    return;
+  }
+  else {
+    resp.send(dbjson);
+  }
+  
+});
+    
     //////////dont touch below this line////////////
-    //return;
+    return;
 
     var options = {
        host: 'access.alchemyapi.com',
