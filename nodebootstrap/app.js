@@ -91,8 +91,8 @@ function callAlch(req,resp){
 
     console.log("callAlch called with "+URL);
 
-    tempModel.find({ link : URL }, function (err, dbjson) {
-//  if (err) {
+    tempModel.findOne({'link' : URL }, function (err, dbjson) {
+  if (err) {
     console.log("Could not find the link");
     
     /* Create new mongoose model to hold data */
@@ -100,19 +100,21 @@ function callAlch(req,resp){
     userInput.printToConsole();  // Check if console logs anything
     
     /* Store in mongodb */
-    userInput.save(function(err) { 
-      if(err) {
-        console.log("errored out"); 
-        return;
-      }
-    });
+    // userInput.save(function(err) { 
+    //   if(err) {
+    //     console.log("errored out"); 
+    //     return;
+    //   }
+    // });
+
     resp.send(URL);
     return;
-  //}
-  //else {
+  }
+  else {
+    console.log("MONGO RESP: "+dbjson);
     //should run when we found in DB
   //  resp.send("SDfsadfsadf");
-  //}
+  }
   
 });
 
@@ -132,7 +134,7 @@ function callAlch(req,resp){
 
         //CALLBACK alchemy request
        alchResp.on('end',function(){
-           console.log(jsonResp);
+           //console.log(jsonResp);
            resp.send(jsonResp);
            //resp.render('about', { title: 'UnBias.Me', checkPage: 'about' });
            //linkRequest(jsonResp);
