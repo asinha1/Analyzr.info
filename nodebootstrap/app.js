@@ -92,7 +92,7 @@ function callAlch(req,resp){
     console.log("callAlch called with "+URL);
 
     tempModel.find({ link : URL }, function (err, dbjson) {
-  if (err) {
+//  if (err) {
     console.log("Could not find the link");
     
     /* Create new mongoose model to hold data */
@@ -108,15 +108,16 @@ function callAlch(req,resp){
     });
     resp.send(URL);
     return;
-  }
-  else {
-    resp.send(dbjson);
-  }
+  //}
+  //else {
+    //should run when we found in DB
+  //  resp.send("SDfsadfsadf");
+  //}
   
 });
+
     
-    //////////dont touch below this line////////////
-    return;
+//////////below this line works, dont mess with it too much//////////
 
     var options = {
        host: 'access.alchemyapi.com',
@@ -127,37 +128,30 @@ function callAlch(req,resp){
    var jsonResp = '';
 
    //request Alchemy API
-   var req = http.request(options, function(res) {
+   var alchRequest = http.get(options, function(alchResp) {
 
         //CALLBACK alchemy request
-       res.on('end',function(){
+       alchResp.on('end',function(){
            console.log(jsonResp);
-
            resp.send(jsonResp);
            //resp.render('about', { title: 'UnBias.Me', checkPage: 'about' });
            //linkRequest(jsonResp);
        });
 
-       res.setEncoding('utf8');
+       alchResp.setEncoding('utf8');
 
-       res.on('data', function (chunk) {
+       //data comes in chunks, so concatenate them
+       alchResp.on('data', function (chunk) {
            jsonResp += chunk;
        });
    });
 
-   req.on('error', function(e) {
+   //err handler
+   alchRequest.on('error', function(e) {
        console.log('problem with request: ' + e.message);
    });
 
 
-
-        // write data to request body
-        req.write('data\n');
-        req.write('data\n');
-        req.end();
-
-
-
-    }
+}
 
 
