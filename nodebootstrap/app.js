@@ -18,7 +18,7 @@ var request = require('request');
 var mongoose = require("mongoose");
 
 /* Connect to mongodb on Aashish's AWS */ 
-mongoose.connect('mongodb://ec2-54-201-115-172.us-west-2.compute.amazonaws.com/testStuff');
+mongoose.connect('mongodb://ec2-54-201-115-172.us-west-2.compute.amazonaws.com/alchdb');
 var db = mongoose.connection;
 
 /* Error handler */
@@ -29,21 +29,21 @@ db.once('open', function callback () {
 
 // Schema for now is a simple tuple of the URL and the author (which i will just make up)
 var Schema = mongoose.Schema;
-var tempSchema = new Schema({
+var alchSchema = new Schema({
         link : String,
-        author : String
+        data : String
 });
 
 /* This function will do a console log to test the Schema vailidity */
-tempSchema.methods.printToConsole = function() {
+alchSchema.methods.printToConsole = function() {
  var address = this.link ? "URL is: " + this.link : "No URL";
  console.log(address);
- var writer = this.author ? "Author is: " + this.author : "No Author";
- console.log(writer);
+ var json = this.data ? "JSON data is: " + this.data : "No data";
+ console.log(json);
  
 }
 
-var tempModel = mongoose.model('tempModel',tempSchema);
+var alchModel = mongoose.model('alchModel',alchSchema);
 
 
 var app = express();
@@ -94,26 +94,29 @@ function callAlch(req,resp){
     tempModel.findOne({'link' : URL }, function (err, dbjson) {
   if (err) {
     console.log("Could not find the link");
-    
+  }
+  if(dbjson == null) {
+    return; //remove once we organize into helper functions
+    /* DO ALCHEMY CALL */
     /* Create new mongoose model to hold data */
-    var userInput = new tempModel({link : URL, author: "Aashish Sinha"});
+    var userInput = new alchModel({link : URL, data: dbjson});
     userInput.printToConsole();  // Check if console logs anything
     
     /* Store in mongodb */
-    // userInput.save(function(err) { 
-    //   if(err) {
-    //     console.log("errored out"); 
-    //     return;
-    //   }
-    // });
+    userInput.save(function(err) { 
+     if(err) {
+         console.log("errored out"); 
+         return;
+       }
+     });
 
     resp.send(URL);
     return;
   }
   else {
-    console.log("MONGO RESP: "+dbjson);
+    console.log("Got from db: "+ dbjson);
     //should run when we found in DB
-  //  resp.send("SDfsadfsadf");
+    resp.send(dbjson);
   }
   
 });
