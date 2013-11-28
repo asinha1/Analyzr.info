@@ -27,7 +27,7 @@ db.once('open', function callback () {
    console.log("Connected");
 });
 
-// Schema for now is a simple tuple of the URL and the author (which i will just make up)
+// Schema for link/json pair
 var Schema = mongoose.Schema;
 var alchSchema = new Schema({
         link : String,
@@ -40,7 +40,6 @@ alchSchema.methods.printToConsole = function() {
  console.log(address);
  var json = this.data ? "JSON data is: " + this.data : "No data";
  console.log(json);
- 
 }
 
 var alchModel = mongoose.model('alchModel',alchSchema);
@@ -72,7 +71,7 @@ app.get('/about', about.text);
 app.get('/contact', contact.text);
 app.get('/users', user.list);
 app.post('/about', about.postUrl);
-app.post('/',  callAlch);
+app.post('/',  sendAlchData);
 
 
 http.createServer(app).listen(app.get('port'), 
@@ -84,44 +83,42 @@ http.createServer(app).listen(app.get('port'),
 
 
 
-function callAlch(req,resp){
+function sendAlchData(req,resp){
 
     //get URL from submitted form
     var URL = req.body.data;
 
-    console.log("callAlch called with "+URL);
+    console.log("sendAlchData called with "+URL);
 
-    tempModel.findOne({'link' : URL }, function (err, dbjson) {
-  if (err) {
-    console.log("Could not find the link");
-  }
-  if(dbjson == null) {
-    return; //remove once we organize into helper functions
-    /* DO ALCHEMY CALL */
-    /* Create new mongoose model to hold data */
-    var userInput = new alchModel({link : URL, data: dbjson});
-    userInput.printToConsole();  // Check if console logs anything
+    alchModel.findOne({'link' : URL }, 
+    function (err, dbjson) {
+      if (err) {
+        console.log("findOne error");
+        return;
+      }
+      else if(dbjson != null) {    
+        //should run when we found in DB
+        console.log("MONGO: found in db: "+ dbjson);
+        resp.send(JSON.parse(dbjson).linkedData);
+        return;
+      }
+      else{
+        //have to do API call
+        console.log("MONGO: not in db")
+        callAlch(URL,resp);
+        return;
+      }
     
-    /* Store in mongodb */
-    userInput.save(function(err) { 
-     if(err) {
-         console.log("errored out"); 
-         return;
-       }
-     });
-
-    resp.send(URL);
-    return;
-  }
-  else {
-    console.log("Got from db: "+ dbjson);
-    //should run when we found in DB
-    resp.send(dbjson);
-  }
-  
-});
-
+    });
     
+
+}
+
+
+function callAlch(URL,resp){
+
+
+/////////////////// now we know we have to do an api call///////////
 //////////below this line works, dont mess with it too much//////////
 
     var options = {
@@ -137,10 +134,12 @@ function callAlch(req,resp){
 
         //CALLBACK alchemy request
        alchResp.on('end',function(){
-           //console.log(jsonResp);
+           
+           //send to DB
+           addToDb(URL,jsonResp);
+
+           //send to client
            resp.send(jsonResp);
-           //resp.render('about', { title: 'UnBias.Me', checkPage: 'about' });
-           //linkRequest(jsonResp);
        });
 
        alchResp.setEncoding('utf8');
@@ -153,10 +152,26 @@ function callAlch(req,resp){
 
    //err handler
    alchRequest.on('error', function(e) {
-       console.log('problem with request: ' + e.message);
+       console.log('ALCH: problem with request: ' + e.message);
    });
 
+}
 
+function addToDb(URL,dbjson){
+
+  /* DO ALCHEMY CALL */
+  /* Create new mongoose model to hold data */
+  var userInput = new alchModel({link : URL, data: dbjson});
+    //userInput.printToConsole();  // Check if console logs anything
+    
+    /* Store in mongodb */
+    userInput.save(function(err) { 
+     if(err) {
+       console.log("MONGO: errored out adding to db"); 
+     }
+   });
+
+    return;
 }
 
 
