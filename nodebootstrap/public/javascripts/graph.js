@@ -6,15 +6,10 @@ function linkRequest(){
 	var URL = document.getElementById("urlIn").value;
 	document.getElementById("graph").innerHTML="<br>Getting data for URL: <u>"+URL+"</u><br>";
 
-	
-
-
-	alert("Sending ajax req for: "+URL);
 
 	var jqxhr = $.post( "/", {data:URL},function() {
 	})
 	.done(function(data) {
-		alert("Recieved from our own server: "+data);
 		graphit(data);
 	})
 	.fail(function() {
@@ -29,14 +24,23 @@ function linkRequest(){
 }
 
 
-function graphit(jsonInput){
+function graphit(strAlchData){
+
+	var jsonAlchData = JSON.parse(strAlchData);
+
+	if(jsonAlchData.status=="ERROR")
+		alert("error with alch req: "+jsonAlchData.statusInfo);
+
+	var data = jsonAlchData.entities;
+
+	alert(JSON.stringify(data));
 
 	//set width and height of graph
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 	width = 700 - margin.left - margin.right,
 	height = 200 - margin.top - margin.bottom;
 
-	//set ranges and domains for x,y axiss
+	//set ranges and domains for x,y axis
 	var x = d3.scale.linear()
 	.range([0, width]);
 
@@ -66,12 +70,12 @@ function graphit(jsonInput){
 
 
 
-	var data = [
-	{'sentiment':90, 'sepalLength':3, 'rad':6},
-	{'sentiment':-70, 'sepalLength':4, 'rad':10},
-	{'sentiment':0, 'sepalLength':5, 'rad':14},
-	{'sentiment':20, 'sepalLength':6, 'rad':18}
-	];
+	// var data = [
+	// {'sentiment':90, 'sepalLength':3, 'rad':6},
+	// {'sentiment':-70, 'sepalLength':4, 'rad':10},
+	// {'sentiment':0, 'sepalLength':5, 'rad':14},
+	// {'sentiment':20, 'sepalLength':6, 'rad':18}
+	// ];
 
 
 
@@ -104,25 +108,10 @@ function graphit(jsonInput){
 	.data(data)
 	.enter().append("circle")
 	.attr("class", "dot")
-	.attr("r", function(d) { return (d.rad); })
-	.attr("cx", function(d) { return x(d.sentiment); })
-	.attr("cy", function(d) { return y(d.sepalLength); })
+	.attr("r", function(d) { return (d.relevance); })
+	.attr("cx", function(d) { alert(d.sentiment.score);return 100*(parseInt(d.sentiment.score)); })
+	.attr("cy", function(d) { return 5; })
 	.style("fill", function(d) { return color(d.species); });
-
-	
-	legend.append("rect")
-	.attr("x", width - 18)
-	.attr("width", 18)
-	.attr("height", 18)
-	.style("fill", color);
-
-	legend.append("text")
-	.attr("x", width - 24)
-	.attr("y", 9)
-	.attr("dy", ".35em")
-	.style("text-anchor", "end")
-	.text(function(d) { return d; });
-
 
 
 }
