@@ -1,7 +1,18 @@
-/**
- * Module dependencies.
+/*
+ * app.js - the head honcho
+ *
+ * Initializes the web server, estabilishes connection to MONGO database
+ * and performs the api calls, db calls, and db stores
+ *
+ * Also sends data to client browser
+ *
+ * Contributors:
+ * Aashish Sinha
+ * Brian Bergeron
+ *
  */
 
+/* Needed Node variables */
  var express = require('express');
  var routes = require('./routes');
  var about = require('./routes/about');
@@ -9,25 +20,22 @@
  var contact = require('./routes/contact');
  var http = require('http');
  var path = require('path');
-//var reqAPI = require('./routes/reqAPI');
-//var article = [{author: "Akul", _id : 1}, {author: "Aashish", _id : 1}];]
 
 /* Stuff for mongoose */
 var request = require('request');
-//var XMLHttpRequest = require("XMLHttpRequest");
 var mongoose = require("mongoose");
 
 /* Connect to mongodb on Aashish's AWS */ 
 mongoose.connect('mongodb://ec2-54-201-115-172.us-west-2.compute.amazonaws.com/alchdb');
 var db = mongoose.connection;
 
-/* Error handler */
+/* Error handler for database connection */
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
    console.log("Connected");
 });
 
-// Schema for link/json pair
+/* Schema for link/json pair */
 var Schema = mongoose.Schema;
 var alchSchema = new Schema({
         link : String,
@@ -88,12 +96,14 @@ function sendAlchData(req,resp){
     //get URL from submitted form
     var URL = req.body.data;
 
+    /* log the sending of info */
     console.log("sendAlchData called with "+URL);
 
     alchModel.findOne({'link' : URL }, 
     function (err, dbjson) {
+      /* Return db access error */
       if (err) {
-        console.log("findOne error");
+        console.log("MONGO: findOne error");
         return;
       }
       else if(dbjson != null) {    
@@ -116,10 +126,7 @@ function sendAlchData(req,resp){
 
 function callAlch(URL,resp){
 
-
-/////////////////// now we know we have to do an api call///////////
-//////////below this line works, dont mess with it too much//////////
-
+    /* Setting up the API call parameters */
     var options = {
        host: 'access.alchemyapi.com',
        path: '/calls/url/URLGetRankedNamedEntities?outputMode=json&apikey=2094dd01fd7cbceb7e1bb916840e40e81f25d16f&sentiment=1&linkedData=1&url='+URL,
@@ -149,7 +156,7 @@ function callAlch(URL,resp){
        });
    });
 
-   //err handler
+   /* error handler */
    alchRequest.on('error', function(e) {
        console.log('ALCH: problem with request: ' + e.message);
    });
