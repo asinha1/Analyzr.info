@@ -1,9 +1,5 @@
 
-window.onload = function(){
 
-
-
-}
 
 function linkRequest(){
 

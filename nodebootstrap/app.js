@@ -99,7 +99,7 @@ function sendAlchData(req,resp){
       else if(dbjson != null) {    
         //should run when we found in DB
         console.log("MONGO: found in db: "+ dbjson);
-        resp.send(JSON.parse(dbjson).linkedData);
+        resp.send(dbjson.data);
         return;
       }
       else{
@@ -111,7 +111,6 @@ function sendAlchData(req,resp){
     
     });
     
-
 }
 
 
