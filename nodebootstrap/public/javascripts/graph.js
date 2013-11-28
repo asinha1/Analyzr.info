@@ -1,5 +1,7 @@
 
-
+window.onload = function(){
+	
+}
 
 function linkRequest(){
 
@@ -7,19 +9,20 @@ function linkRequest(){
 	document.getElementById("graph").innerHTML="<br>Getting data for URL: <u>"+URL+"</u><br>";
 
 
+	//post our own server
 	var jqxhr = $.post( "/", {data:URL},function() {
 	})
-	.done(function(data) {
-		graphit(data);
-	})
-	.fail(function() {
-		alert( "error querying our own server" );
+		//CALLBACK
+		.done(function(data) {
+			graphit(data);
+		})
+		.fail(function() {
+			alert( "error querying our own server" );
 	});
 
 
+	//we dont want calling form to submit request
 	return false;
-
-
 
 }
 
@@ -28,21 +31,24 @@ function graphit(strAlchData){
 
 	var jsonAlchData = JSON.parse(strAlchData);
 
+	//catch error
 	if(jsonAlchData.status=="ERROR")
 		alert("error with alch req: "+jsonAlchData.statusInfo);
 
+
 	var allEntities = jsonAlchData.entities;
 
+	//get only 10 most relevant entries
 	var data = [allEntities[0],
 		allEntities[1],allEntities[2],allEntities[3],
 		allEntities[4],allEntities[5],allEntities[6],allEntities[7]
-		,allEntities[8],allEntities[9],allEntities[10],allEntities[11],
-		allEntities[12]];
+		,allEntities[8],allEntities[9]];
 
 	var least = 100;
 	var most = -100;
 
-	//preproccess
+	//preproccess the outer most values
+	//if sentiment is neutral, give score of 0
 	for(var i=0; i<data.length; i++){
 
 		if(!(data[i].sentiment.score))
@@ -58,8 +64,6 @@ function graphit(strAlchData){
 
 
 
-
-
 	//set width and height of graph
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 	width = 700 - margin.left - margin.right,
@@ -72,6 +76,8 @@ function graphit(strAlchData){
 	var y = d3.scale.linear()
 	.range([height, 0]);
 
+
+	//set domains to fit data
 	x.domain([least-10,most+10]);	
 	y.domain([0,10]);
 
@@ -89,7 +95,7 @@ function graphit(strAlchData){
 	.append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
+	//make the initial graph axis and label
 	svg.append("g")
 	.attr("class", "x axis")
 	.attr("transform", "translate(0," + height + ")")
@@ -98,16 +104,14 @@ function graphit(strAlchData){
 	.attr("class", "label")
 	.attr("x", width)
 	.style("text-anchor", "end")
+	.attr("y",-5)
 	.text("Sentiment");
 
-	var mostneg = 0;
-	var mostpos = 0;
-	var numArt = 0;
-
-
+	//color scales
 	var redToYel = d3.scale.linear().domain([least,0]).range(['red', 'yellow']);
 	var yelToGreen = d3.scale.linear().domain([0,most]).range(['yellow', 'green']);
 
+	//make tooltip (and set what it displays)
 	var tip = d3tip().attr('class', 'd3-tip').html(
 		function(d) { 
 			return "<font color=\"fd01c6\"size=5>"+d.text+"</font><p>Relevance: "
@@ -116,11 +120,10 @@ function graphit(strAlchData){
 			parseFloat(d.sentiment.score*100).toFixed(1)+"</font>"; 
 
 		});
-
 	svg.call(tip);
 
 
-
+	//for each datapoint, make/style a "dot" element
 	svg.selectAll(".dot")
 	.data(data)
 	.enter().append("circle")
@@ -132,7 +135,6 @@ function graphit(strAlchData){
 		return x(score);
 
 		 })
-	.style("opacity", .7)
 	.style("fill",function(d){ 
 
 		var score = 100*d.sentiment.score;
@@ -146,7 +148,7 @@ function graphit(strAlchData){
 
 }
 
-
+//gets color scaled from red-yellow-green
 function getScaledColor(redToYel,yelToGreen,score){
 
 
