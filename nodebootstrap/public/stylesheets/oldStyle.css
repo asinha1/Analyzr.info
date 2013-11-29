@@ -1,0 +1,78 @@
+body {
+  padding: 50px;
+  background-color: #FFF;
+
+}
+
+
+#mainSec  {
+  width: 80%;
+  min-width: 700px;
+  height: 1000px;
+  background-color: #FFF;
+  overflow:hidden;
+} 
+
+#topBar{
+  background-color: #FFF;
+  height: 150px;
+  width:100%;
+}
+
+#panelRight {
+  position: static;
+  text-align:center;
+  margin:0 auto; 
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+#tile {
+  width: 90%;
+}
+
+
+#graph {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  padding: 10px
+
+}
+
+.dot {
+  opacity: .7;
+  stroke: #000;
+  stroke-opacity: .7;
+  stroke-width: 1px;
+}
+.dot:hover{
+  stroke-width: 3px;
+  stroke-opacity: 1;
+  opacity: 1;
+  z-index: 1;
+}
+
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.label {
+
+    padding-bottom: 10px;
+    font-size: 20px;
+}

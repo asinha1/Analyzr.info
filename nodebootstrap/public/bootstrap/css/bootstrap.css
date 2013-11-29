@@ -787,6 +787,7 @@ pre code {
   margin-left: auto;
 }
 
+
 .container:before,
 .container:after {
   display: table;
@@ -5225,13 +5226,13 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
-  padding: 30px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
   background-color: #62b0ff;
+
 }
 
 .jumbotron h1 {
@@ -5247,7 +5248,6 @@ a.list-group-item.active > .badge,
 }
 
 .container .jumbotron {
-  background-color: #62b0ff;
   border-radius: 6px;
 }
 
@@ -5255,11 +5255,13 @@ a.list-group-item.active > .badge,
   .jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
+    background-color: #62b0ff;
   }
   .container .jumbotron {
     padding-right: 60px;
     padding-left: 60px;
   }
+
   .jumbotron h1 {
     font-size: 63px;
   }
