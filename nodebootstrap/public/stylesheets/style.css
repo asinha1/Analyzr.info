@@ -1,42 +1,9 @@
 body {
-  padding: 50px;
-}
 
-#mainSec  {
-  overflow:hidden;
-  height: 600px;
-} 
-
-#panelLeft {
-  width: 30%;
-  float: left;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-right: solid #00000a 2px;
-}
-
-#panelRight {
-  float: right;
-  width: 65%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.red .active a,
-.red .active a:hover {
-  background-color:red;
-}
-
-#tile {
-  width: 90%;
+  background-color: #F0F0F0;
 }
 
 
-#graph {
-  font: 10px sans-serif;
-}
 
 .axis path,
 .axis line {
@@ -48,7 +15,7 @@ body {
 }
 
 .dot {
-  opacity: .7;
+  opacity: .8;
   stroke: #000;
   stroke-opacity: .7;
   stroke-width: 1px;

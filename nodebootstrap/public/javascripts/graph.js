@@ -38,11 +38,14 @@ function graphit(strAlchData){
 
 	var allEntities = jsonAlchData.entities;
 
-	//get only 10 most relevant entries
-	var data = [allEntities[0],
-		allEntities[1],allEntities[2],allEntities[3],
-		allEntities[4],allEntities[5],allEntities[6],allEntities[7]
-		,allEntities[8],allEntities[9]];
+	var data = [];
+
+	//get only 10 most relevant entries IF there are 10
+	for(var i=0; (i<10 && i<Object.keys(allEntities).length); i++){
+
+		data[i] = allEntities[i];
+	}
+	
 
 	var least = 100;
 	var most = -100;
@@ -108,8 +111,8 @@ function graphit(strAlchData){
 	.text("Sentiment");
 
 	//color scales
-	var redToYel = d3.scale.linear().domain([least,0]).range(['red', 'yellow']);
-	var yelToGreen = d3.scale.linear().domain([0,most]).range(['yellow', 'green']);
+	var redToYel = d3.scale.linear().domain([least,0]).range(['#ff6262', '#ffff62']);
+	var yelToGreen = d3.scale.linear().domain([0,most]).range(['#ffff62', '#b0ff62']);
 
 	//make tooltip (and set what it displays)
 	var tip = d3tip().attr('class', 'd3-tip').html(

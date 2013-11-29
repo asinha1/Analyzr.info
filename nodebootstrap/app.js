@@ -20,6 +20,7 @@
  var contact = require('./routes/contact');
  var http = require('http');
  var path = require('path');
+ var fs = require('fs');
 
 /* Stuff for mongoose */
 var request = require('request');
@@ -69,12 +70,15 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', about.text);
+app.get('/', function(req,res){
+  res.sendfile('public/index.html');
+});
 app.get('/about', about.text);
 app.get('/contact', contact.text);
 app.get('/users', user.list);
