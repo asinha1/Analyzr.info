@@ -5237,7 +5237,7 @@ a.list-group-item.active > .badge,
 .jumbotron h1 {
   line-height: 1;
   color: white;
-  text-shadow: black 4px 4px 4px;
+  text-shadow: black 2px 2px 2px;
 }
 
 .jumbotron p {
@@ -5247,6 +5247,7 @@ a.list-group-item.active > .badge,
 }
 
 .container .jumbotron {
+  background-color: #62b0ff;
   border-radius: 6px;
 }
 
