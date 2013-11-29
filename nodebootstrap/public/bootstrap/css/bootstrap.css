@@ -5238,15 +5238,21 @@ a.list-group-item.active > .badge,
 .jumbotron h1 {
   line-height: 1;
   color: white;
-  text-shadow: black 2px 2px 2px;
+//  text-shadow: black 2px 2px 2px;
 }
 
 .jumbotron p {
   line-height: 1.4;
   color: white;
-  text-shadow: black 1px 1px 1px;
+//  text-shadow: black 1px 1px 1px;
 }
 
+.jumbotron b {
+  line-height: 1;
+  color: white;
+  text-shadow: black 2px 2px 2px;
+
+}
 .container .jumbotron {
   border-radius: 6px;
 }
