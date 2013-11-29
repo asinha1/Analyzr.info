@@ -809,9 +809,8 @@ pre code {
 }
 
 .row {
-  //margin-right: -15px;
-  //margin-left: -15px;
-  margin : 0px auto;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .row:before,
