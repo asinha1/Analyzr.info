@@ -41,17 +41,32 @@
 
  <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+        <h1>All of the facts, none of the <b>bullshit.</b></h1>
+        <p>
+        Take the guesswork out of analyzing text. <br>
+        Whether it's a political article, tech review, or blog post, 
+        Analyzr takes the key subjects and displays connotative information
+        about them in easy to read, presentable graphs and charts.
+        </p>
+        <p>
+        <a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a>
+        </p>
       </div>
     </div>
 
-		
+<form class="form-inline" role="form" name="urlInForm" onsubmit="return linkRequest();">
+  <div class="form-group">
+    <label class="sr-only" for="urlInForm">URL: </label>
+    <input type="text" class="form-control" id="urlIn" placeholder="Enter URL">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>	
+
+<!--
 		<form name="urlInForm" method="post" action="#" onsubmit="return linkRequest();">Enter Article URL<input type="text" id="urlIn">
 		<input type="submit" value="Submit"></key>
 		</form>
-
+-->
 
 		<div id="tooltip" class="hidden"></div>
 		<div id="graph"></div>
