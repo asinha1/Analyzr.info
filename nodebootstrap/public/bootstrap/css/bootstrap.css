@@ -1111,7 +1111,6 @@ pre code {
   }
   .col-sm-1,
   .col-sm-2,
-  .col-sm-3,
   .col-sm-4,
   .col-sm-5,
   .col-sm-6,
@@ -1121,6 +1120,18 @@ pre code {
   .col-sm-10,
   .col-sm-11 {
     float: left;
+  }  .col-sm-3L{
+    float:left;
+    padding-left: 5%;
+  }
+  .col-sm-3M{
+  float:left;
+  padding-left: 20%;
+
+  }
+  .col-sm-3R{
+    float:left;
+    padding-left: 20%;
   }
   .col-sm-12 {
     width: 100%;
