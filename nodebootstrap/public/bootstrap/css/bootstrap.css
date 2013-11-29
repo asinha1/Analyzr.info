@@ -5231,28 +5231,22 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #62b0ff;
+  background-color: #5391ca;
 
 }
 
 .jumbotron h1 {
   line-height: 1;
   color: white;
-text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-shadow: black 2px 2px 2px;
 }
 
 .jumbotron p {
   line-height: 1.4;
   color: white;
-text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-shadow: black 1px 1px 1px;
 }
 
-.jumbotron b {
-  line-height: 1;
-  color: white;
-  text-shadow: black 2px 2px 2px 2px;
-
-}
 .container .jumbotron {
   border-radius: 6px;
 }
@@ -5261,7 +5255,7 @@ text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   .jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
-    background-color: #62b0ff;
+    background-color: #5391ca;
   }
   .container .jumbotron {
     padding-right: 60px;
