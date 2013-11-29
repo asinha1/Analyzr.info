@@ -1,0 +1,21 @@
+11/28/13
+- Change from jumbotron to carousel of topics
+    - Tech
+    - Politics
+    - Religion
+    - Blogs
+    - Entertainment
+
+- Write JS to implement hiding/displaying data blocks
+    - Should be a more detailed summary of the tooltips for each
+      circle
+    - If extra blocks, should remain hidden
+
+- Refactor graph.js
+    - Display graph on load
+    - Make circles bigger
+    - General cleanliness
+
+- Write "About" page
+
+- GENERAL: Read JSON again for more ideas
