@@ -61,3 +61,19 @@
     font-size: 20px;
 }
 
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+  background: #131413;
+  height: 155px; /* .push must be the same height as .footer */
+}
+
+.redbar{
+  background-color: #9d1f0f;
+  height: 25px;
+}

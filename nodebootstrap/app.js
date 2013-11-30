@@ -79,10 +79,10 @@ if ('development' == app.get('env')) {
 app.get('/', function(req,res){
   res.sendfile('public/index.html');
 });
-app.get('/about', about.text);
-app.get('/contact', contact.text);
-app.get('/users', user.list);
-app.post('/about', about.postUrl);
+
+app.get('/about', function(req,res){
+  res.sendfile('public/about.html');
+});
 app.post('/',  sendAlchData);
 
 
