@@ -1,3 +1,5 @@
+
+
 #allDataBlocks{
   border-style: solid;
   margin-left: auto;
@@ -6,10 +8,11 @@
 }
 
 .dataBlock{
+  
   background-color: #131413;
   height: 120px;
   width: 120px;
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #graph{
