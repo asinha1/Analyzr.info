@@ -117,7 +117,7 @@ function graphit(strAlchData){
 	//make tooltip (and set what it displays)
 	var tip = d3tip().attr('class', 'd3-tip').html(
 		function(d) { 
-			return "<font color=\"fd01c6\"size=5>"+d.text+"</font><p>Relevance: "
+			return "<font color=\"9d1f0f\"size=5>"+d.text+"</font><p>Relevance: "
 			+parseFloat(d.relevance*100).toFixed(1)+"%<br>Sentiment: <font color=\""
 			+getScaledColor(redToYel,yelToGreen,100*d.sentiment.score)+"\">"+
 			parseFloat(d.sentiment.score*100).toFixed(1)+"</font>"; 
