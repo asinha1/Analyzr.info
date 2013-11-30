@@ -5267,7 +5267,7 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
-  height: 500px;
+  height: 400px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
@@ -5280,6 +5280,7 @@ a.list-group-item.active > .badge,
 .jumbotron h1 {
   line-height: 1;
   color: white;
+  font-size: 63px;
 }
 
 .jumbotron p {
@@ -5302,10 +5303,7 @@ a.list-group-item.active > .badge,
     padding-left: 60px;
   }
 
-  .jumbotron h1 {
-    font-size: 63px;
-  }
-}
+
 
 .thumbnail {
   display: inline-block;
@@ -6418,6 +6416,29 @@ button.close {
 
 .carousel {
   position: relative;
+  height: 430px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  color: #fff;
+  background-color:#131413 ;
+}
+
+.carousel p {
+  line-height: 1.4;
+  color: white;
+}
+
+
+.carousel h1 {
+  line-height: 1;
+  color: white;
+    font-size: 63px;
+}
+.carousel b {
+  line-height: 1;
+  color: #9d1f0f;
 }
 
 .carousel-inner {
@@ -6608,6 +6629,7 @@ button.close {
 }
 
 @media screen and (min-width: 768px) {
+
   .carousel-control .glyphicons-chevron-left,
   .carousel-control .glyphicons-chevron-right,
   .carousel-control .icon-prev,

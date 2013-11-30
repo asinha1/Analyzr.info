@@ -1,5 +1,5 @@
 
-
+html, body {height: 100%;}
 #allDataBlocks{
   border-style: solid;
   margin-left: auto;
@@ -16,14 +16,31 @@
 }
 
 #graph{
+  height: 300px;
 }
 
 #header{
+  padding-top: 20px;
   color:#123456;
   height: 100px;
 }
 #header h2 ,b{
   color:#9d1f0f;
+}
+
+#logo{
+  float: left;
+  margin-right: 7px;
+}
+
+#aboutdiv{
+  margin-top: 27px;
+  color: #fff;
+  float:right;
+}
+
+#aboutdiv a{
+  color: #fff;
 }
 
 .axis path,
@@ -36,7 +53,7 @@
 }
 
 .dot {
-  opacity: .8;
+  opacity: .7;
   stroke: #000;
   stroke-opacity: .7;
   stroke-width: 1px;

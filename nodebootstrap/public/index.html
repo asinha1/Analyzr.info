@@ -1,14 +1,14 @@
 <!DOCTYPE html><html>
 <head>
-	<title>Analyzr</title>
-	<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" href="/stylesheets/style.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="/bootstrap/js/bootstrap.js"></script>
-	<script src="/backbone/backbone-min.js"></script>
-	<script src="/javascripts/graph.js"></script>
-	<script src="/javascripts/tip.js"></script>
-	<script src="http://d3js.org/d3.v3.min.js"></script>
+  <title>Analyzr</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.js"></script>
+  <script src="/backbone/backbone-min.js"></script>
+  <script src="/javascripts/graph.js"></script>
+  <script src="/javascripts/tip.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 
 <body>
@@ -17,87 +17,107 @@
 
 
 
-  <div class="jumbotron">
+  <div class="carousel">
+    <div class="carousel-inner">
+      <div class="item active">
+        <div class="container">
+          <div id="header">
+            <div id="logo">
+       
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="75px" height="75px">
+                <polygon points="37,0 0,75 75,75"
+                style="fill:#0"/>
+                <polygon points="37,16 13,67 63,67.5" 
+                style="fill:#9d1f0f"/>
+                <polygon points="37,33 25,60 50,60" 
+                style="fill:#fff"/>
+              </svg>
 
-      <div class="container">
-          <div id="header"><font size=30 color="#9d1f0f">ANALYZR</font></div>
+            </div>
+          <font size=30 color="#9d1f0f">analyzr</font>
+          <div id="aboutdiv"><a href="/about">About</a></div>
+          </div>
           <h1>All of the facts, none of the <b>bullshit.</b></h1>
           <p>
             Take the guesswork out of analyzing text. <br>
-            Whether it's a political article, tech review, or blog post, 
-            Analyzr takes the key subjects and displays connotative information
-            about them in easy to read, presentable graphs and charts.
-        </p>
-        <center>
+            Whether it's a political article, tech review, or blog post, Analyzr finds the key subjects and displays connotative information about them in presentable graphs and charts.
+          </p>
+          <center>
             <form class="form-inline" role="form" name="urlInForm" onsubmit="return linkRequest();">
               <div class="form-group">
                 <label class="sr-only" for="urlIn">URL: </label>
                 <input type="text" class="form-control" id="urlIn" placeholder="Enter URL">
-            </div>
-            <button type="submit" class="redbtn">analyz!</button>
-        </form> 
-    </center>
-</div>
-</div>
-<center>
+              </div>
+              <button type="submit" class="redbtn">Analyz!</button>
+            </form> 
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <center>
 
-  <div id="tooltip" class="hidden"></div>
-  <div id="graph"></div>
-  <br><br><br>
-  <div id="allDataBlocks">
-    <div class="row">
+
+    <div id="tooltip" class="hidden"></div>
+    <div id="graphContainer">
+      <div id="graphTitle"></div>
+      <div id="graph"></div>
+    </div>
+    <br><br><br>
+    <div id="allDataBlocks">
+      <div class="row">
         <div class="col-3 col-sm-3A">
-            <div class="dataBlock"></div>
+          <div class="dataBlock"></div>
         </div><!--/span-->
         <div class="col-3 col-sm-3B">
-            <div class="dataBlock"></div>
+          <div class="dataBlock"></div>
         </div><!--/span-->
         <div class="col-3 col-sm-3C">
-            <div class="dataBlock"></div>
+          <div class="dataBlock"></div>
         </div><!--/span-->
         <div class="col-3 col-sm-3D">
-            <div class="dataBlock"></div>
+          <div class="dataBlock"></div>
         </div><!--/span-->
-    </div> <!--/row-->
-    <div class="row">
+      </div> <!--/row-->
+      <div class="row">
 
         <div class="col-3 col-sm-3A">
          <div class="dataBlock"></div>
-     </div><!--/span-->
+       </div><!--/span-->
 
-     <div class="col-3 col-sm-3B">
+       <div class="col-3 col-sm-3B">
         <div class="dataBlock"></div>
-    </div><!--/span-->
+      </div><!--/span-->
 
-    <div class="col-3 col-sm-3C">
+      <div class="col-3 col-sm-3C">
         <div class="dataBlock"></div>
-    </div><!--/span-->
+      </div><!--/span-->
 
 
-    <div class="col-3 col-sm-3D">
-            <div class="dataBlock"></div>
-        </div><!--/span-->
-
-</div> <!--/row-->
-<div class="row">
-    <div class="col-3 col-sm-3A">
+      <div class="col-3 col-sm-3D">
         <div class="dataBlock"></div>
-    </div><!--/span-->
-    <div class="col-3 col-sm-3B">
+      </div><!--/span-->
+
+    </div> <!--/row-->
+    <div class="row">
+      <div class="col-3 col-sm-3A">
         <div class="dataBlock"></div>
-    </div><!--/span-->
-    <div class="col-3 col-sm-3C">
+      </div><!--/span-->
+      <div class="col-3 col-sm-3B">
         <div class="dataBlock"></div>
-    </div><!--/span-->
+      </div><!--/span-->
+      <div class="col-3 col-sm-3C">
+        <div class="dataBlock"></div>
+      </div><!--/span-->
 
 
-    <div class="col-3 col-sm-3D">
+      <div class="col-3 col-sm-3D">
         <div class="dataBlock"></div>
-        </div><!--/span-->
-</div> <!--/row-->
-</div><!--/allDataBlocks-->
+      </div><!--/span-->
+    </div> <!--/row-->
+  </div><!--/allDataBlocks-->
 
 </center>
 
@@ -108,8 +128,8 @@
 
 
 <div class="footer">
-    <p>This <strong>CSS Sticky Footer</strong> simply stays put.</p>
-    <p class="copyright">Copyright &copy; 2013 Ryan Fait &mdash; <a href="http://ryanfait.com/" title="Las Vegas Web Design">Las Vegas Web Design</a></p>
+  <p>This <strong>CSS Sticky Footer</strong> simply stays put.</p>
+  <p class="copyright">Copyright &copy; 2013 Ryan Fait &mdash; <a href="http://ryanfait.com/" title="Las Vegas Web Design">Las Vegas Web Design</a></p>
 </div>
 
 
