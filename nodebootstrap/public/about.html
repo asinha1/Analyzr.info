@@ -16,10 +16,10 @@
         <div class="container">
         <div id="header">
             <font size=30 color="#9d1f0f">ANALYZR</font>
-        </div>
+        </div> <!-- /header -->
         <h1>About <b>Us.</b></h1>
-        </div>
-    </div>
+        </div> <!-- /container -->
+    </div> <!-- /jumbotron -->
     <div class="container">
     <div class="panel panel-default">
         <div class="panel-body">
@@ -34,7 +34,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
       <h3 class="panel-title"><b>ANALYZR</b></h3>
-      </div>
+      </div> <!-- /panel-heading -->
       <div class="panel-body">
               <!--
       Analyzr takes in the URL of an article and finds the topics which are most relevant to the article. 
@@ -49,25 +49,27 @@
       <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Visual Depiction</h3>
-      </div>
+      </div> <!-- /panel-heading -->
       <div class="panel-body">
       Using D3's modeling software, graphs of the topics in the article are created, showing both
-      the topic's relevance to the article, as well as its "sentiment value", in a tooltip. <br>
-      A drop down menu lets the user switch between major groups of topics, for example Companies,
-      People, or Governments. <br>
+      the topic's relevance to the article, as well as its "sentiment value", in a tooltip. Analyzr
+      allows the user to, via a drop down menu, let the user change what the graph displays, with 
+      filters, including broad ones like "Most Relevant" and "Only Positive", and more specific ones
+      allowing you to filter by category.Analyzr is able to break topics down into over 100 different 
+      categories. <br>
       Visual relation to the relevance and sentiment via color transitions and size changes are used
       as an aid to the user.
       <!--
     The data is graphed on an x-axis from negative to positive sentiment.  Each subject is colored to 
     match its sentiment and its size represents the relevance to the article. insert picture of graph
     -->
-      </div>
-    </div>
+      </div> <!-- /panel-body -->
+    </div> <!-- /panel -->
     
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Concise Tables</h3>
-      </div>
+        <h3 class="panel-title">Clear, Concise Tables</h3>
+      </div> <!-- /panel-heading -->
       <div class="panel-body">
       For a more detailed analysis of the article, a table of the topics being displayed on the screen 
       and relevant data about them, is displayed under the graph. Each listing contains a small breakdown
@@ -76,35 +78,14 @@
      The raw data is presented in a table.  Each subject is presented along with its relevence and 
      sentiment to the article.  insert picture of table
      -->
-      </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Dynamic:</h3>
-      </div>
-      <div class="panel-body">
-    Hovering over a datapoint highlights the data in both the graph and table.  The graph also displays 
-    a popup showing the data for that subject.
-      </div>
-    </div>
+      </div> <!-- /panel-body -->
+    </div> <!-- /panel -->
     
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Filtering:</h3>
-      </div>
-      <div class="panel-body">
-      To accommodate many styles of articles, analyzr allows filtering by subject type.  By default analyzr 
-      will display the most relevant subjects, but you can filter by subject type.  Analyzr can detect hundreds 
-      of subject types ranging from countries to operating systems, and allows you to filter the data by the 
-      types it detects.
-      </div>
-    </div>
+    </div> <!-- /panel-body -->
+    </div> <!-- /panel -->
 
-        </div>
-    </div>
-    </div>
-    </body>
+    </div> <!-- /panel-body -->
+    </div> <!-- /panel -->
+    </div> <!-- /container -->
+</body>
 </html>
