@@ -70,7 +70,7 @@ function graphit(strAlchData){
 	//set width and height of graph
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 	width = 900 - margin.left - margin.right,
-	height = 200 - margin.top - margin.bottom;
+	height = 300 - margin.top - margin.bottom;
 
 	//set ranges and domains for x,y axis
 	var x = d3.scale.linear()
@@ -131,7 +131,7 @@ function graphit(strAlchData){
 	.data(data)
 	.enter().append("circle")
 	.attr("class", "dot")
-	.attr("r", function(d) { return (d.relevance*50)+10; })
+	.attr("r", function(d) { return (d.relevance*70)+10; })
 	.attr("cx", function(d) {
 
 		var score = 100*d.sentiment.score;
@@ -144,7 +144,7 @@ function graphit(strAlchData){
 		return getScaledColor(redToYel,yelToGreen,score);
 
 		})
-	.attr("cy", function(d) { return y(5); })
+	.attr("cy", function(d) { return y(4); })
 	.on('mouseover', tip.show)
     .on('mouseout', tip.hide);
 	

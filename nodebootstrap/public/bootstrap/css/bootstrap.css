@@ -885,6 +885,7 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+
 }
 
 .col-xs-1,
@@ -1120,18 +1121,22 @@ pre code {
   .col-sm-10,
   .col-sm-11 {
     float: left;
-  }  .col-sm-3L{
+  }  .col-sm-3A{
     float:left;
     padding-left: 5%;
   }
-  .col-sm-3M{
+  .col-sm-3B{
   float:left;
-  padding-left: 20%;
+  padding-left: 5%;
 
   }
-  .col-sm-3R{
+  .col-sm-3C{
     float:left;
-    padding-left: 20%;
+    padding-left: 5%;
+  }
+    .col-sm-3D{
+    float:left;
+    padding-left: 5%;
   }
   .col-sm-12 {
     width: 100%;
@@ -2258,6 +2263,28 @@ textarea.input-lg {
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
+}
+
+.redbtn {
+  color: #fff;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #9d1f0f;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -4474,6 +4501,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-fixed-top,
 .navbar-fixed-bottom {
+
   position: fixed;
   right: 0;
   left: 0;
@@ -4483,11 +4511,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-fixed-top,
   .navbar-fixed-bottom {
+
     border-radius: 0;
   }
 }
 
 .navbar-fixed-top {
+
   top: 0;
   border-width: 0 0 1px;
 }
@@ -4808,7 +4838,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
+  background-color: #fff;
   border-color: #080808;
 }
 
@@ -5237,25 +5267,24 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
+  height: 500px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #5391ca;
+  background-color:#131413 ;
 
 }
 
 .jumbotron h1 {
   line-height: 1;
   color: white;
-  text-shadow: black 2px 2px 2px;
 }
 
 .jumbotron p {
   line-height: 1.4;
   color: white;
-  text-shadow: black 1px 1px 1px;
 }
 
 .container .jumbotron {
@@ -5266,7 +5295,7 @@ a.list-group-item.active > .badge,
   .jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
-    background-color: #5391ca;
+    background-color: #131413;
   }
   .container .jumbotron {
     padding-right: 60px;

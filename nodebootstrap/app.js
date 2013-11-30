@@ -57,7 +57,7 @@ var alchModel = mongoose.model('alchModel',alchSchema);
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 1337);
+app.set('port', process.env.PORT || 2468);
 
 ////////
 app.set('views', __dirname + '/views');
