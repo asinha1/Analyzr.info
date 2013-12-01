@@ -1,5 +1,6 @@
-var x,y,margin,xAxis,svg,width,height,filters;
+var x,y,margin,xAxis,svg,width,height,filters,typeFilter;
 
+//onload, initially display an empty graph
 window.onload = function(){
 
 	//set width and height of graph
@@ -46,10 +47,11 @@ window.onload = function(){
 	
 }
 
+//gets called when user clicks ANALYZ
+//queries request for alchemy data (from our server "dijkstra")
 function linkRequest(){
 
 	var URL = document.getElementById("urlIn").value;
-
 
 	//post our own server
 	var jqxhr = $.post( "/", {data:URL},function() {
@@ -62,22 +64,20 @@ function linkRequest(){
 			alert( "error querying our own server" );
 	});
 
-
 	//we dont want calling form to submit request
 	return false;
-
 }
 
-
-function graphit(strAlchData){
+//gven a set of datapoints, graph on div #graph
+function graphit(inputJsonData){
 
 
 	var data = [];
 
 	//get only 10 most relevant entries IF there are 10
-	for(var i=0; (i<10 && i<Object.keys(allEntities).length); i++){
+	for(var i=0; (i<12 && i<Object.keys(inputJsonData).length); i++){
 
-		data[i] = allEntities[i];
+		data[i] = inputJsonData[i];
 	}
 	
 
@@ -162,17 +162,22 @@ function graphit(strAlchData){
 
 //gets color scaled from red-yellow-green
 function getScaledColor(redToYel,yelToGreen,score){
-
-
-		return (score<0) ? redToYel(score) : yelToGreen(score);
-
-}
+		return (score<0) ? redToYel(score) : yelToGreen(score);}
 
 
 
+//input: string resp. from our server "dijkstra" (the ALCH call)
+//function sorts entres by type and # occurences for each type
+//returns: graphs initial graph with mostRelevant 
+function parseData(strAlchData){
 
-function parseData(jsonStr){
+	//mostOccur keeps track of which types occur most
+	var mostOccur = [];
+	mostOccur[0] = {"type" : "mostRel", "occur": 9999999};
+	mostOccur[1] = {"type" : "onlyPos", "occur": 9999998};
+	mostOccur[2] = {"type" : "onlyNeg", "occur": 9999997};
 
+	//turn input str into json
 	var jsonAlchData = JSON.parse(strAlchData);
 
 	//catch error
@@ -181,7 +186,66 @@ function parseData(jsonStr){
 
 	var allEntities = jsonAlchData.entities;
 
+	//typeFilter is JSON object whch organizes entries by type
+	typeFilter = {};
+	typeFilter['onlyPos']=[];
+	typeFilter['onlyNeg']=[];
+	typeFilter['mostRel']=[];
 	
+	//loop over ALL entries
+	for(var i=0; (i<Object.keys(allEntities).length); i++){
+
+		//get each entry and its type
+		var entry = allEntities[i];
+		var type = entry.type;
+		
+		//if new type, we must initialize a place for it
+		//in both mostOccur and typesFilter
+		if(!typeFilter[type]){
+			typeFilter[type] = [];
+			mostOccur.push({"type" : type, "occur": 0});
+		}
+
+		//find the elem in mostOccur and inc occur
+		for(var e=0; e <mostOccur.length; e++)
+		{
+			var elem = mostOccur[e];
+			if(elem.type === type){
+				elem.occur++;
+				break;	//efficiency
+			}
+		}
+
+		//add elem to the correct type in typeFlter
+		typeFilter[type].push(entry);
+
+		//add to correct sentiment type
+		if(entry.sentiment.score){
+			if(100*entry.sentiment.score>0)
+				typeFilter['onlyPos'].push(entry);
+			else
+				typeFilter['onlyNeg'].push(entry);
+		}
+ 
+		//add top 12 entries to mostRel type
+		if(i<12)
+			typeFilter['mostRel'].push(entry);
+
+	}
+
+	//sort mostOccur by #occurrences
+	mostOccur.sort(function(type1,type2){
+		return type2.occur-type1.occur;
+	});
+
+	//DEBUG prove they are sorted by #occur
+	for(var i=0; i< mostOccur.length;i++){
+		console.log(JSON.stringify(mostOccur[i]));
+	}
+
+	//frst graph is always mostRelevant
+	graphit(typeFilter.mostRel);
+
 
 
 }
