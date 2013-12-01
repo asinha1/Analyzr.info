@@ -9,7 +9,7 @@ html, body {height: 100%;}
 
 .dataBlock{
   
-  background-color: #131413;
+  background-color: #303230;
   height: 120px;
   width: 120px;
   margin-bottom: 10px;
@@ -28,10 +28,29 @@ html, body {height: 100%;}
   color:#9d1f0f;
 }
 
-#logo{
+.logo{
   float: left;
   margin-right: 7px;
+  height: 100%;
 }
+
+div.logo {
+    position: relative;
+}
+
+div.logo a{
+ position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none; /* No underlines on the link */
+    z-index: 10; /* Places the link above everything else in the div */
+    background-color: #FFF; /* Fix to make div clickable in IE */
+    opacity: 0; /* Fix to make div clickable in IE */
+    filter: alpha(opacity=1); /* Fix to make div clickable in IE */
+}
+
 
 #aboutdiv{
   margin-top: 27px;
@@ -108,4 +127,3 @@ html, body {height: 100%;}
   background-color:#131413 ;
 
 }
-

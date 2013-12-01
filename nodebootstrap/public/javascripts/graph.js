@@ -1,4 +1,4 @@
-var x,y,margin,xAxis,svg,width,height;
+var x,y,margin,xAxis,svg,width,height,filters;
 
 window.onload = function(){
 
@@ -56,7 +56,7 @@ function linkRequest(){
 	})
 		//CALLBACK
 		.done(function(data) {
-			graphit(data);
+			parseData(data);
 		})
 		.fail(function() {
 			alert( "error querying our own server" );
@@ -71,14 +71,6 @@ function linkRequest(){
 
 function graphit(strAlchData){
 
-	var jsonAlchData = JSON.parse(strAlchData);
-
-	//catch error
-	if(jsonAlchData.status=="ERROR")
-		alert("error with alch req: "+jsonAlchData.statusInfo);
-
-
-	var allEntities = jsonAlchData.entities;
 
 	var data = [];
 
@@ -112,7 +104,6 @@ function graphit(strAlchData){
 	x.domain([least-10,most+10]);	
 
 
-
 	//color scales
 	var redToYel = d3.scale.linear().domain([least,0]).range(['red', 'yellow']);
 	var yelToGreen = d3.scale.linear().domain([0,most]).range(['yellow', 'green']);
@@ -129,6 +120,20 @@ function graphit(strAlchData){
 	svg.call(tip);
 
 	svg.selectAll(".dot").remove();
+
+	svg.select("g").remove();
+
+	//redraw axis
+	svg.append("g")
+	.attr("class", "x axis")
+	.attr("transform", "translate(0," + height + ")")
+	.call(xAxis)
+	.append("text")
+	.attr("class", "label")
+	.attr("x", width)
+	.style("text-anchor", "end")
+	.attr("y",-5)
+	.text("Sentiment");
 
 	//for each datapoint, make/style a "dot" element
 	svg.selectAll(".dot")
@@ -160,5 +165,23 @@ function getScaledColor(redToYel,yelToGreen,score){
 
 
 		return (score<0) ? redToYel(score) : yelToGreen(score);
+
+}
+
+
+
+
+function parseData(jsonStr){
+
+	var jsonAlchData = JSON.parse(strAlchData);
+
+	//catch error
+	if(jsonAlchData.status=="ERROR")
+		alert("error with alch req: "+jsonAlchData.statusInfo);
+
+	var allEntities = jsonAlchData.entities;
+
+	
+
 
 }

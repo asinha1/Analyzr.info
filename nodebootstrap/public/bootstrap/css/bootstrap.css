@@ -6415,6 +6415,7 @@ button.close {
 }
 
 .carousel {
+  min-width: 900px;
   position: relative;
   height: 430px;
   margin-bottom: 30px;
@@ -6424,6 +6425,8 @@ button.close {
   color: #fff;
   background-color:#131413 ;
 }
+
+
 
 .carousel p {
   line-height: 1.4;

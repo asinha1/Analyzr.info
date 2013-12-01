@@ -1,4 +1,4 @@
-/*
+/ *
  * app.js - the head honcho
  *
  * Initializes the web server, estabilishes connection to MONGO database
@@ -7,7 +7,7 @@
  * Also sends data to client browser
  *
  * Contributors:
- * Aashish Sinha yo
+ * Aashish Sinha
  * Brian Bergeron
  *
  */
