@@ -1,4 +1,4 @@
-/ *
+/*
  * app.js - the head honcho
  *
  * Initializes the web server, estabilishes connection to MONGO database
@@ -60,6 +60,8 @@ var app = express();
 app.set('port', process.env.PORT || 2468);
 
 ////////
+
+app.use(express.favicon(__dirname + '/public/favicon.ico')); 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -75,7 +77,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
 app.get('/', function(req,res){
   res.sendfile('public/index.html');
 });
@@ -83,6 +84,7 @@ app.get('/', function(req,res){
 app.get('/about', function(req,res){
   res.sendfile('public/about.html');
 });
+
 app.post('/',  sendAlchData);
 
 
