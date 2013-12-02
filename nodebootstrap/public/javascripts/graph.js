@@ -239,13 +239,48 @@ function parseData(strAlchData){
 	});
 
 	//DEBUG prove they are sorted by #occur
-	for(var i=0; i< mostOccur.length;i++){
-		console.log(JSON.stringify(mostOccur[i]));
+	// for(var i=0; i< mostOccur.length;i++){
+	// 	console.log(JSON.stringify(mostOccur[i]));
+	// }
+
+
+	//append button to filter entities
+	var toBeAppended="";
+	var filterDiv = document.getElementById("filterDiv");
+
+	toBeAppended+=
+          "<button type=\"button\" class=\"btn btn-default dropdown-toggle\""+
+          "data-toggle=\"dropdown\" style=\"background-color:#9d1f0f;color:#ffffff\">"+
+            "Filter Entries <span class=\"caret\"></span>"+
+          "</button>";
+
+
+	//append filter choices to HTML document
+	toBeAppended+="<ul class=\"dropdown-menu\" role=\"menu\">"+
+	        "<li><a href=\"javascript:;\" onclick=filter(\"mostRel\");>Most Relevant</a></li>"+
+        "<li><a href=\"javascript:;\" onclick=filter(\"onlyPos\");>Only Positive</a></li>"+
+        "<li><a href=\"javascript:;\" onclick=filter(\"onlyNeg\");>Only Negative</a></li>"+
+        "<li class=\"divider\"></li>";
+
+	for(var i=3; i< mostOccur.length;i++){
+
+		var theType = mostOccur[i].type;
+		var numEnt = mostOccur[i].occur;
+		toBeAppended+= 
+        "<li><a href=\"javascript:;\" onclick=filter(\""+theType+"\");>"+theType.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")+"</a></li>";
 	}
 
+	toBeAppended+="</ul>";
+
+	filterDiv.innerHTML=toBeAppended;
+
 	//frst graph is always mostRelevant
-	graphit(typeFilter.mostRel);
+	filter("mostRel");
+}
 
-
-
+function filter(typeToBeGraphed)
+{
+		document.getElementById("graphTitle").innerHTML=
+		"Graphing: "+typeToBeGraphed;
+	graphit(typeFilter[typeToBeGraphed]);
 }

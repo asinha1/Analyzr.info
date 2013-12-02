@@ -3639,7 +3639,7 @@ input[type="button"].btn-block {
 }
 
 .btn-default .caret {
-  border-top-color: #333333;
+  border-top-color: #fff;
 }
 
 .btn-primary .caret,
