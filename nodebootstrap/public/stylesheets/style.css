@@ -1,19 +1,57 @@
 
 html, body {height: 100%;}
 #allDataBlocks{
-  border-style: solid;
-  margin-left: auto;
-  margin-right: auto;
-  width: 700px;
+  min-width: 900px;
+  width: 900px;
+  height: 600px;
 }
 
 .dataBlock{
-  
-  background-color: #303230;
-  height: 120px;
-  width: 120px;
+  background-color: #131413;
+}
+
+.dataRow{
+  color: #fff;
+  height: 180px;
+  width: 900px;
   margin-bottom: 10px;
 }
+
+.dataColA{
+  float:left;
+  margin-left: 30px;
+  height: 180px;
+  width: 200px;
+}
+
+.dataColB{
+  float:left;
+  margin-left: 10px;
+  height: 180px;
+  width: 200px;
+}
+
+.dataColC{
+  float:left;
+  margin-left: 10px;
+  height: 180px;
+  width: 200px;
+}
+
+.dataColD{
+  float:left;
+  margin-left: 10px;
+  height: 180px;
+  width: 200px;
+}
+
+
+
+
+#tagLine h1{
+    font-size: 50px;
+  }
+
 
 #graphContainer{
   width:900px;
@@ -76,6 +114,9 @@ div.logo a{
   color: #fff;
 }
 
+
+
+
 .axis path,
 .axis line {
   fill: none;
@@ -122,6 +163,7 @@ div.logo a{
   margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
+  min-width: 900px;
   background: #131413;
   height: 155px; /* .push must be the same height as .footer */
 }

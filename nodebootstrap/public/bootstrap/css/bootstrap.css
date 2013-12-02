@@ -781,6 +781,7 @@ pre code {
 }
 
 .container {
+  min-width: 900px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -1992,6 +1993,7 @@ textarea.form-control {
 }
 
 .form-group {
+  width: 300px;
   margin-bottom: 15px;
 }
 
@@ -2183,10 +2185,10 @@ textarea.input-lg {
   color: #737373;
 }
 
-@media (min-width: 768px) {
+
   .form-inline .form-group {
     display: inline-block;
-    margin-bottom: 0;
+    margin-top: 10px;
     vertical-align: middle;
   }
   .form-inline .form-control {
@@ -2204,7 +2206,6 @@ textarea.input-lg {
     float: none;
     margin-left: 0;
   }
-}
 
 .form-horizontal .control-label,
 .form-horizontal .radio,
@@ -6445,6 +6446,7 @@ button.close {
 }
 
 .carousel-inner {
+  min-width: 900px;
   position: relative;
   width: 100%;
   overflow: hidden;

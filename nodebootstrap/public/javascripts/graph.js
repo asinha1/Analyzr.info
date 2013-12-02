@@ -4,7 +4,7 @@ var x,y,margin,xAxis,svg,width,height,filters,typeFilter;
 window.onload = function(){
 
 	//set width and height of graph
-	margin = {top: 20, right: 20, bottom: 30, left: 40};
+	margin = {top: 20, right: 40, bottom: 30, left: 40};
 	width = 900 - margin.left - margin.right,
 	height = 300 - margin.top - margin.bottom;
 
@@ -71,11 +71,12 @@ function linkRequest(){
 //gven a set of datapoints, graph on div #graph
 function graphit(inputJsonData){
 
-
 	var data = [];
 
 	//get only 10 most relevant entries IF there are 10
-	for(var i=0; (i<12 && i<Object.keys(inputJsonData).length); i++){
+	var len = Object.keys(inputJsonData).length;
+
+	for(var i=0; (i<12 && i<len); i++){
 
 		data[i] = inputJsonData[i];
 	}
@@ -87,9 +88,6 @@ function graphit(inputJsonData){
 	//preproccess the outer most values
 	//if sentiment is neutral, give score of 0
 	for(var i=0; i<data.length; i++){
-
-		if(!(data[i].sentiment.score))
-			data[i].sentiment.score=0;
 
 		var sent = data[i].sentiment.score*100;
 
@@ -171,11 +169,13 @@ function getScaledColor(redToYel,yelToGreen,score){
 //returns: graphs initial graph with mostRelevant 
 function parseData(strAlchData){
 
+	//console.log(strAlchData);
+
 	//mostOccur keeps track of which types occur most
 	var mostOccur = [];
-	mostOccur[0] = {"type" : "mostRel", "occur": 9999999};
-	mostOccur[1] = {"type" : "onlyPos", "occur": 9999998};
-	mostOccur[2] = {"type" : "onlyNeg", "occur": 9999997};
+	mostOccur[0] = {"type" : "MostRelevant", "occur": 9999999};
+	mostOccur[1] = {"type" : "OnlyPositive", "occur": 9999998};
+	mostOccur[2] = {"type" : "OnlyNegative", "occur": 9999997};
 
 	//turn input str into json
 	var jsonAlchData = JSON.parse(strAlchData);
@@ -188,16 +188,21 @@ function parseData(strAlchData){
 
 	//typeFilter is JSON object whch organizes entries by type
 	typeFilter = {};
-	typeFilter['onlyPos']=[];
-	typeFilter['onlyNeg']=[];
-	typeFilter['mostRel']=[];
+	typeFilter['OnlyPositive']=[];
+	typeFilter['OnlyNegative']=[];
+	typeFilter['MostRelevant']=[];
 	
 	//loop over ALL entries
-	for(var i=0; (i<Object.keys(allEntities).length); i++){
+	var len = Object.keys(allEntities).length;
+	for(var i=0; i<len; i++){
 
 		//get each entry and its type
 		var entry = allEntities[i];
 		var type = entry.type;
+
+		//get this out of the way, makes rest of code easier
+		if(!(entry.sentiment.score))
+			entry.sentiment.score=0;
 		
 		//if new type, we must initialize a place for it
 		//in both mostOccur and typesFilter
@@ -222,14 +227,14 @@ function parseData(strAlchData){
 		//add to correct sentiment type
 		if(entry.sentiment.score){
 			if(100*entry.sentiment.score>0)
-				typeFilter['onlyPos'].push(entry);
+				typeFilter['OnlyPositive'].push(entry);
 			else
-				typeFilter['onlyNeg'].push(entry);
+				typeFilter['OnlyNegative'].push(entry);
 		}
  
-		//add top 12 entries to mostRel type
+		//add top 12 entries to MostRelevant type
 		if(i<12)
-			typeFilter['mostRel'].push(entry);
+			typeFilter['MostRelevant'].push(entry);
 
 	}
 
@@ -257,17 +262,18 @@ function parseData(strAlchData){
 
 	//append filter choices to HTML document
 	toBeAppended+="<ul class=\"dropdown-menu\" role=\"menu\">"+
-	        "<li><a href=\"javascript:;\" onclick=filter(\"mostRel\");>Most Relevant</a></li>"+
-        "<li><a href=\"javascript:;\" onclick=filter(\"onlyPos\");>Only Positive</a></li>"+
-        "<li><a href=\"javascript:;\" onclick=filter(\"onlyNeg\");>Only Negative</a></li>"+
+	        "<li><a href=\"javascript:;\" onclick=filter(\"MostRelevant\");>Most Relevant</a></li>"+
+        "<li><a href=\"javascript:;\" onclick=filter(\"OnlyPositive\");>Only Positive</a></li>"+
+        "<li><a href=\"javascript:;\" onclick=filter(\"OnlyNegative\");>Only Negative</a></li>"+
         "<li class=\"divider\"></li>";
 
 	for(var i=3; i< mostOccur.length;i++){
 
 		var theType = mostOccur[i].type;
-		var numEnt = mostOccur[i].occur;
+		var numOccur = mostOccur[i].occur;
 		toBeAppended+= 
-        "<li><a href=\"javascript:;\" onclick=filter(\""+theType+"\");>"+theType.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")+"</a></li>";
+        "<li><a href=\"javascript:;\" onclick=filter(\""+theType+"\");>"+
+        theType.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")+" ("+(numOccur>12 ? "12+" :numOccur)+")</a></li>";
 	}
 
 	toBeAppended+="</ul>";
@@ -275,12 +281,149 @@ function parseData(strAlchData){
 	filterDiv.innerHTML=toBeAppended;
 
 	//frst graph is always mostRelevant
-	filter("mostRel");
+	filter("MostRelevant");
 }
 
 function filter(typeToBeGraphed)
 {
-		document.getElementById("graphTitle").innerHTML=
-		"Graphing: "+typeToBeGraphed;
-	graphit(typeFilter[typeToBeGraphed]);
+	//set Title
+	var filteredEntries = typeFilter[typeToBeGraphed];
+	document.getElementById("graphTitle").innerHTML=
+		"Graphing: "+typeToBeGraphed.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1");
+
+	//graph all entries
+	graphit(filteredEntries);
+
+	//for each entry, update data box
+	var len = filteredEntries.length;
+
+	for(var i=0; i<12; i++){
+
+		var theBox = document.getElementById("bl"+i);
+
+		if(i<len){
+
+			var alchEntry = filteredEntries[i];
+
+			var toAppend="";
+
+			toAppend=
+			alchEntry.text+
+			"<br>Type: "+alchEntry.type.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")+
+			"<br>Sentiment: "+parseFloat(alchEntry.sentiment.score*100).toFixed(1)+
+			"<br>Relevance: "+parseFloat(alchEntry.relevance*100).toFixed(1)+
+			"<br>Occurences: "+alchEntry.count;
+
+			//look for website and database links
+			if(alchEntry.disambiguated){
+
+				//look for website
+				if(alchEntry.disambiguated.website){
+
+					toAppend+="<br>Site: <a href = \""+alchEntry.disambiguated.website+"\">"+
+					alchEntry.disambiguated.website.substring(7,23);
+
+					if(alchEntry.disambiguated.website.length>23)
+						toAppend+="...";
+					toAppend+="</a>"
+				}
+
+			////////Looks for any databases (picks in order of quality)
+				if(alchEntry.disambiguated.ciaFactbook){
+
+					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.ciaFactbook+"\">"+
+					alchEntry.disambiguated.ciaFactbook.substring(7,20);
+
+					if(alchEntry.disambiguated.ciaFactbook.length>20)
+						toAppend+="...";
+					toAppend+="</a>"
+
+				}
+
+				else if(alchEntry.disambiguated.crunchbase){
+
+					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.crunchbase+"\">"+
+					alchEntry.disambiguated.crunchbase.substring(7,20);
+
+					if(alchEntry.disambiguated.crunchbase.length>20)
+						toAppend+="...";
+					toAppend+="</a>"
+
+				}
+
+
+
+				else if(alchEntry.disambiguated.census){
+
+					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.census+"\">"+
+					alchEntry.disambiguated.census.substring(7,20);
+
+					if(alchEntry.disambiguated.census.length>20)
+						toAppend+="...";
+					toAppend+="</a>"
+
+				}
+
+				else if(alchEntry.disambiguated.dbpedia){
+
+					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.dbpedia+"\">"+
+					alchEntry.disambiguated.dbpedia.substring(7,20);
+
+					if(alchEntry.disambiguated.dbpedia.length>20)
+						toAppend+="...";
+					toAppend+="</a>"
+
+				}
+
+
+
+				else if(alchEntry.disambiguated.freebase){
+
+					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.freebase+"\">"+
+					alchEntry.disambiguated.freebase.substring(7,20);
+
+					if(alchEntry.disambiguated.freebase.length>20)
+						toAppend+="...";
+					toAppend+="</a>"
+
+				}
+
+				else if(alchEntry.disambiguated.opencyc){
+
+					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.opencyc+"\">"+
+					alchEntry.disambiguated.opencyc.substring(7,20);
+
+					if(alchEntry.disambiguated.opencyc.length>20)
+						toAppend+="...";
+					toAppend+="</a>"
+
+				}
+
+				else if(alchEntry.disambiguated.yago){
+
+					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.yago+"\">"+
+					alchEntry.disambiguated.yago.substring(7,20);
+
+					if(alchEntry.disambiguated.yago.length>20)
+						toAppend+="...";
+					toAppend+="</a>"
+
+				}
+
+
+			}
+
+
+			theBox.innerHTML=toAppend;
+
+		}
+		else{
+
+			theBox.innerHTML="";
+
+		}
+
+
+	}
+
 }

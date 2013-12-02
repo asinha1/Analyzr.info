@@ -40,15 +40,16 @@
           
           <div id="aboutdiv"><a href="/about">About</a></div>
           </div>
-          <h1>All of the facts, none of the <b>bullshit.</b></h1>
+            <div id ="tagLine">
+            <h1>All the facts, none of the <b>bullshit.</b></h1>
+            </div>
           <p>
             Take the guesswork out of analyzing text. <br>
             Whether it's a political article, tech review, or blog post, Analyzr graphs connotative information about the key subjects it finds in your text.
           </p>
           <center>
-            <form class="form-inline" role="form" name="urlInForm" onsubmit="return linkRequest();">
+            <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest();">
               <div class="form-group">
-                <label class="sr-only" for="urlIn">URL: </label>
                 <input type="text" class="form-control" id="urlIn" placeholder="Enter URL">
               </div>
               <button type="submit" class="redbtn">Analyz!</button>
@@ -71,59 +72,33 @@
 
       <div id="graph"></div>
     </div>
+
     <br><br><br>
+
     <div id="allDataBlocks">
-      <div class="row">
-        <div class="col-3 col-sm-3A">
-          <div class="dataBlock"></div>
-        </div><!--/span-->
-        <div class="col-3 col-sm-3B">
-          <div class="dataBlock"></div>
-        </div><!--/span-->
-        <div class="col-3 col-sm-3C">
-          <div class="dataBlock"></div>
-        </div><!--/span-->
-        <div class="col-3 col-sm-3D">
-          <div class="dataBlock"></div>
-        </div><!--/span-->
-      </div> <!--/row-->
-      <div class="row">
 
-        <div class="col-3 col-sm-3A">
-         <div class="dataBlock"></div>
-       </div><!--/span-->
+      <div class="dataRow">
+        <div id="bl0" class="dataColA dataBlock"></div>
+        <div id="bl1" class="dataColB dataBlock"></div>
+        <div id="bl2" class="dataColC dataBlock"></div>
+        <div id="bl3" class="dataColD dataBlock"></div>
+      </div>
 
-       <div class="col-3 col-sm-3B">
-        <div class="dataBlock"></div>
-      </div><!--/span-->
+      <div class="dataRow">
+        <div id="bl4" class="dataColA dataBlock"></div>
+        <div id="bl5" class="dataColB dataBlock"></div>
+        <div id="bl6" class="dataColC dataBlock"></div>
+        <div id="bl7" class="dataColD dataBlock"></div>
+      </div>
 
-      <div class="col-3 col-sm-3C">
-        <div class="dataBlock"></div>
-      </div><!--/span-->
-
-
-      <div class="col-3 col-sm-3D">
-        <div class="dataBlock"></div>
-      </div><!--/span-->
-
-    </div> <!--/row-->
-    <div class="row">
-      <div class="col-3 col-sm-3A">
-        <div class="dataBlock"></div>
-      </div><!--/span-->
-      <div class="col-3 col-sm-3B">
-        <div class="dataBlock"></div>
-      </div><!--/span-->
-      <div class="col-3 col-sm-3C">
-        <div class="dataBlock"></div>
-      </div><!--/span-->
-
-
-      <div class="col-3 col-sm-3D">
-        <div class="dataBlock"></div>
-      </div><!--/span-->
-    </div> <!--/row-->
-  </div><!--/allDataBlocks-->
+      <div class="dataRow">
+        <div id="bl8" class="dataColA dataBlock"></div>
+        <div id="bl9" class="dataColB dataBlock"></div>
+        <div id="bl10" class="dataColC dataBlock"></div>
+        <div id="bl11" class="dataColD dataBlock"></div>
+      </div>
+ 
+    </div><!--/allDataBlocks-->
 
 </center>
 
