@@ -7,11 +7,11 @@ html, body {height: 100%;}
 }
 
 .dataBlock{
-  background-color: #131413;
+  //background-color: #131413;
 }
 
 .dataRow{
-  color: #fff;
+  color: #131413;
   height: 180px;
   width: 900px;
   margin-bottom: 10px;
