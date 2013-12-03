@@ -308,11 +308,11 @@ function filter(typeToBeGraphed)
 			var toAppend="";
 
 			toAppend=
-            //"<div class=\"panel panel-default\">" +
+            "<div class=\"panel panel-default\">" +
             //"<div class=\"panel-heading\">" +
             //"<h3 class=\"panel-title\"><b>" +alchEntry.text +"</b></h3>" +
             //"</div> <!-- /panel-header -->" +
-            //"<div class=\"panel-body\">
+            "<div class=\"panel-body\">"+
 			"Type: "+alchEntry.type.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")+
 			"<br>Sentiment: "+parseFloat(alchEntry.sentiment.score*100).toFixed(1)+
 			"<br>Relevance: "+parseFloat(alchEntry.relevance*100).toFixed(1)+
