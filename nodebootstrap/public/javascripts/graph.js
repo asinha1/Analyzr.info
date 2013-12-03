@@ -316,7 +316,8 @@ function filter(typeToBeGraphed)
 			"Type: "+alchEntry.type.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")+
 			"<br>Sentiment: "+parseFloat(alchEntry.sentiment.score*100).toFixed(1)+
 			"<br>Relevance: "+parseFloat(alchEntry.relevance*100).toFixed(1)+
-			"<br>Occurences: "+alchEntry.count;
+			"<br>Occurences: "+alchEntry.count +
+            ";
 
 			//look for website and database links
 			if(alchEntry.disambiguated){
