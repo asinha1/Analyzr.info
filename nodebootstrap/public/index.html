@@ -16,33 +16,37 @@
 
 
 
-
-  <div class="carousel">
-    <div class="carousel-inner">
-        <div class="container">
-          <div id="header">
-            <div class="logo">
+  <div id="topChunk">
+    <div class="container" id = "headerCont">
+      <div id="header">
+        <div class="logo">
 
 
-              <a href = "/"></a>
+          <a href = "/"></a>
 
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="75px" height="75px">
-                <polygon points="37,0 0,75 75,75"
-                style="fill:#fff"/>
-                <polygon points="37,10 7,71 68,71" 
-                style="fill:#9d1f0f"/>
-                <polygon points="37,28 20.5,63 55,63" 
-                style="fill:#000"/>
-              </svg>
-              <font size=30 color="#9d1f0f">analyzr</font>
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="75px" height="75px">
+            <polygon points="37,0 0,75 75,75"
+            style="fill:#fff"/>
+            <polygon points="37,10 7,71 68,71" 
+            style="fill:#9d1f0f"/>
+            <polygon points="37,28 20.5,63 55,63" 
+            style="fill:#000"/>
+          </svg>
+          <font size=30 color="#9d1f0f">analyzr</font>
 
-            </div>
-          
-          <div id="aboutdiv"><a href="/about">About</a></div>
-          </div>
-            <div id ="tagLine">
+        </div>
+
+        <div id="aboutdiv"><a href="/about">About</a></div>
+      </div>
+    </div>
+    <div class="carousel slide vertical" id="homeCarousel" data-interval="false">
+      <div class="carousel-inner">
+       <div class="active item">
+        <div class="container" id="activeItemContainer">
+
+          <div id ="tagLine">
             <h1>All the facts, none of the <b>bullshit.</b></h1>
-            </div>
+          </div>
           <p>
             Take the guesswork out of analyzing text. <br>
             Whether it's a political article, tech review, or blog post, Analyzr graphs connotative information about the key subjects it finds in your text.
@@ -54,51 +58,68 @@
               </div>
               <button type="submit" class="redbtn">Analyz!</button>
             </form> 
+
           </center>
         </div>
+          <center>
+            <a  href="#homeCarousel" data-slide="next">Trending Articles</a>
+          </center>
+
+      </div>
+      <div class="item" id="trending">
+       <div class="container" id="activeItemContainer">
+          <center><br><br>Trending articles go here</center>
+        </div>
+        <center>
+        <a  href="#homeCarousel" data-slide="next">Enter URL</a>
+        </center>
+      </div>
     </div>
+    
+
   </div>
 
+</div>
 
-  <center>
+<center>
 
 
-    <div id="tooltip" class="hidden"></div>
-    <div id="graphContainer">
-      <div id="graphTitle"></div>
+  <div id="tooltip" class="hidden"></div>
+  <div id="graphContainer">
+    <div id="graphTitle"></div>
 
-       <div id ="filterDiv" class="btn-group">
-        </div>
-
-      <div id="graph"></div>
+    <div id ="filterDiv" class="btn-group">
     </div>
 
-    <br><br><br>
+    <div id="graph"></div>
+  </div>
 
-    <div id="allDataBlocks">
+  <br><br><br>
 
-      <div class="dataRow">
-        <div id="bl0" class="dataColA dataBlock"></div>
-        <div id="bl1" class="dataColB dataBlock"></div>
-        <div id="bl2" class="dataColC dataBlock"></div>
-        <div id="bl3" class="dataColD dataBlock"></div>
-      </div>
+  <div id="allDataBlocks">
 
-      <div class="dataRow">
-        <div id="bl4" class="dataColA dataBlock"></div>
-        <div id="bl5" class="dataColB dataBlock"></div>
-        <div id="bl6" class="dataColC dataBlock"></div>
-        <div id="bl7" class="dataColD dataBlock"></div>
-      </div>
+    <div class="dataRow">
+      <div id="bl0" class="dataColA dataBlock"></div>
+      <div id="bl1" class="dataColB dataBlock"></div>
+      <div id="bl2" class="dataColC dataBlock"></div>
+      <div id="bl3" class="dataColD dataBlock"></div>
+    </div>
 
-      <div class="dataRow">
-        <div id="bl8" class="dataColA dataBlock"></div>
-        <div id="bl9" class="dataColB dataBlock"></div>
-        <div id="bl10" class="dataColC dataBlock"></div>
-        <div id="bl11" class="dataColD dataBlock"></div>
-      </div>
- 
-    </div><!--/allDataBlocks-->
+    <div class="dataRow">
+      <div id="bl4" class="dataColA dataBlock"></div>
+      <div id="bl5" class="dataColB dataBlock"></div>
+      <div id="bl6" class="dataColC dataBlock"></div>
+      <div id="bl7" class="dataColD dataBlock"></div>
+    </div>
+
+    <div class="dataRow">
+      <div id="bl8" class="dataColA dataBlock"></div>
+      <div id="bl9" class="dataColB dataBlock"></div>
+      <div id="bl10" class="dataColC dataBlock"></div>
+      <div id="bl11" class="dataColD dataBlock"></div>
+    </div>
+
+  </div><!--/allDataBlocks-->
 
 </center>
 

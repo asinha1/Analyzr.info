@@ -7,7 +7,6 @@ html, body {height: 100%;}
 }
 
 .dataBlock{
-  //background-color: #131413;
 }
 
 .dataRow{
@@ -45,6 +44,20 @@ html, body {height: 100%;}
   width: 200px;
 }
 
+#topChunk{
+  min-width: 900px;
+  height: 370px;
+  background-color:#131413 ;
+}
+
+#activeItemContainer{
+
+    height: 240px;
+}
+
+#homeCarousel{
+  height: 270px;
+}
 
 
 
@@ -55,6 +68,11 @@ html, body {height: 100%;}
 
 #graphContainer{
   width:900px;
+
+}
+
+#headerCont{
+  background-color: #131413;
 }
 
 #graph{
@@ -67,6 +85,7 @@ html, body {height: 100%;}
 }
 
 #header{
+
   padding-top: 20px;
   color:#123456;
   height: 100px;
