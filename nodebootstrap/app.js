@@ -131,6 +131,12 @@ function sendAlchData(req,resp){
 
 function callAlch(URL,resp){
 
+  fs.appendFile("/var/www/ANALYZRURLLOG.log", "Alch being called with url: "+URL+"\n", function(err) {
+    if(err) {
+        console.log(err);
+    } else {}
+}); 
+
     /* Setting up the API call parameters */
     var options = {
        host: 'access.alchemyapi.com',

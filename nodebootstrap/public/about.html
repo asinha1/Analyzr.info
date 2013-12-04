@@ -46,20 +46,18 @@
     <p style="font-size:18px">
     Analyzr was born out of a need to accurately and objectively summarize the mood of articles.</p>
 
-    As programmers, we read a lot of tech articles, and have noticed that many of these articles 
-    discuss the same trending topics in the tech industry. Each article has a positive/negative 
-    spin on each subject, whether that subject be a person, company, technology, or other entity.<br> 
-    As readers we pick up on these sentiments, but as programmers we ask: Can computers do the same?
-    And if they can, can we utilize them to make understanding articles easier?<br> <br>
-                 <!--
-      Analyzr takes in the URL of an article and finds the topics which are most relevant to the article. 
-      It then calculates the sentiment/mood the article has towards each topic and presents the data in dynamic 
-      graphs and tables. <br>
-      -->
-      Analyzr allows users to input the address of an article, and using natural language processing 
-      (via Alchemy API), extracts a list of topics mentioned in the article, and a detailed analysis
-      of the article's sentiment towards those topics. <br>
-      Analyzr then presents the information in a variety of ways:<br><br>
+    As programmers, we read a lot of tech articles, and have noticed that these articles portray companies,
+    technologies, and people with certain biases.<br>
+    As readers we pick up on these sentiments, but as 
+    programmers we ask: Can computers do the same?<br><br>
+                 
+    <!--
+      Analyzr takes in the URL of an article and      -->
+
+      Analyzr allows users to input the address of an article and using natural language processing 
+      (via Alchemy API)  finds the topics which are most relevant to the article. 
+      It then calculates the sentiment the article has towards each topic and presents the data to the user: <br><br>
+
 
       <div class="panel panel-default">
       <div class="panel-heading">
@@ -67,14 +65,15 @@
       </div> <!-- /panel-heading -->
       <div class="panel-body">
       Using D3's modeling software, graphs of the topics in the article are created, showing both
-      the topic's relevance to the article, as well as its "sentiment value", in a tooltip. Analyzr
-      allows the user to, via a drop down menu, let the user change what the graph displays, with 
-      filters, including broad ones like "Most Relevant" and "Only Positive", and more specific ones
-      allowing you to filter by category.Analyzr is able to break topics down into over 100 different 
+      the topic's relevance to the article, as well as its "sentiment value", in a tooltip. 
+    
+
+    
+        <br><br>Analyzr allows filtering by subject type. This includes broad filters like "Most Relevant" and "Only Positive",
+         and more specific ones like "Country" and "Operating System". 
+        Analyzr is able to break topics down into over 100 different 
       categories. <br>
-      Visual relation to the relevance and sentiment via color transitions and size changes are used
-      as an aid to the user.
-      <!--
+        <!--
     The data is graphed on an x-axis from negative to positive sentiment.  Each subject is colored to 
     match its sentiment and its size represents the relevance to the article. insert picture of graph
     -->
@@ -83,12 +82,13 @@
     
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Clear, Concise Tables</h3>
+        <h3 class="panel-title">Detailed Tables</h3>
       </div> <!-- /panel-heading -->
       <div class="panel-body">
-      For a more detailed analysis of the article, a table of the topics being displayed on the screen 
-      and relevant data about them, is displayed under the graph. Each listing contains a small breakdown
-      of the topic, useful links, and a more detailed breakdown of the sentiment and relevance scores.
+      For a more detailed analysis of the article, a table of the topics is displayed below the graph.
+     Each listing contains a small breakdown
+      of the topic, including external database links to learn more about the topic.
+
               <!--
      The raw data is presented in a table.  Each subject is presented along with its relevence and 
      sentiment to the article.  insert picture of table
@@ -108,10 +108,12 @@
         <h3 class="panel-title"><b>The Devs</b></h3>
         </div> <!-- /panel-header -->
         <div class="panel-body">
-        Both Aashish Sinha and Brian Bergeron are Computer Science students at Carnegie Mellon University 
+        Both Aashish Sinha and Brian Bergeron are Computer Science students at Carnegie Mellon University<br>
        
         </div> <!-- /panel-body -->
         </div> <!-- /panel -->
     </div> <!-- /container -->
+
+        <br><br><br>
 </body>
 </html>
