@@ -48,6 +48,7 @@ html, body {height: 100%;}
   min-width: 900px;
   height: 370px;
   background-color:#131413 ;
+  margin-bottom: 50px;
 }
 
 #activeItemContainer{
