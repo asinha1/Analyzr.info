@@ -185,7 +185,7 @@ div.logo a{
 .footer, .push {
   min-width: 900px;
   background: #131413;
-  height: 155px; /* .push must be the same height as .footer */
+  height: 100px; /* .push must be the same height as .footer */
 }
 
 .redbar{
