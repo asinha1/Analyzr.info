@@ -183,9 +183,10 @@ div.logo a{
   margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
+  color: #ccc;
   min-width: 900px;
   background: #131413;
-  height: 100px; /* .push must be the same height as .footer */
+  height: 150px; /* .push must be the same height as .footer */
 }
 
 .redbar{

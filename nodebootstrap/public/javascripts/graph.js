@@ -321,7 +321,7 @@ function filter(typeToBeGraphed)
 			//look for website and database links
 			if(alchEntry.disambiguated){
                 toAppend +=
-                    "<div class=\"list-group\">";
+                    "<br><br><div class=\"list-group\">";
 				//look for website
 				if(alchEntry.disambiguated.website){
 
