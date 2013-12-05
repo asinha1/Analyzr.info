@@ -325,7 +325,7 @@ function filter(typeToBeGraphed)
 				//look for website
 				if(alchEntry.disambiguated.website){
 
-					toAppend+="<br><a href = \""+alchEntry.disambiguated.website+"\" class=\"list-group-item\">"+
+					toAppend+="<a href = \""+alchEntry.disambiguated.website+"\" class=\"list-group-item\">"+
 					"Site" +
                     "</a>";
 				}
@@ -333,23 +333,16 @@ function filter(typeToBeGraphed)
 			////////Looks for any databases (picks in order of quality)
 				if(alchEntry.disambiguated.ciaFactbook){
 
-					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.ciaFactbook+"\" class=\"list-group-item\">"+
-					alchEntry.disambiguated.ciaFactbook.substring(7,20);
-
-					if(alchEntry.disambiguated.ciaFactbook.length>20)
-						toAppend+="...";
-					toAppend+="</a>"
+					toAppend+="<a href = \""+alchEntry.disambiguated.ciaFactbook+"\" class=\"list-group-item\">"+
+                            "Database"+"</a>";
 
 				}
 
 				else if(alchEntry.disambiguated.crunchbase){
 
-					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.crunchbase+"\" class=\"list-group-item\">"+
-					alchEntry.disambiguated.crunchbase.substring(7,20);
-
-					if(alchEntry.disambiguated.crunchbase.length>20)
-						toAppend+="...";
-					toAppend+="</a>"
+					toAppend+="<a href = \""+alchEntry.disambiguated.crunchbase+"\" class=\"list-group-item\">"+
+					"Database";
+					toAppend+="</a>";
 
 				}
 
@@ -357,22 +350,16 @@ function filter(typeToBeGraphed)
 
 				else if(alchEntry.disambiguated.census){
 
-					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.census+"\" class=\"list-group-item\">"+
-					alchEntry.disambiguated.census.substring(7,20);
-
-					if(alchEntry.disambiguated.census.length>20)
-						toAppend+="...";
+					toAppend+="<a href = \""+alchEntry.disambiguated.census+"\" class=\"list-group-item\">"+
+					"Database";
 					toAppend+="</a>"
 
 				}
 
 				else if(alchEntry.disambiguated.dbpedia){
 
-					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.dbpedia+"\" class=\"list-group-item\">"+
-					alchEntry.disambiguated.dbpedia.substring(7,20);
-
-					if(alchEntry.disambiguated.dbpedia.length>20)
-						toAppend+="...";
+					toAppend+="<a href = \""+alchEntry.disambiguated.dbpedia+"\" class=\"list-group-item\">"+
+					"Database";
 					toAppend+="</a>"
 
 				}
@@ -381,33 +368,24 @@ function filter(typeToBeGraphed)
 
 				else if(alchEntry.disambiguated.freebase){
 
-					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.freebase+"\" class=\"list-group-item\">"+
-					alchEntry.disambiguated.freebase.substring(7,20);
-
-					if(alchEntry.disambiguated.freebase.length>20)
-						toAppend+="...";
+					toAppend+="<a href = \""+alchEntry.disambiguated.freebase+"\" class=\"list-group-item\">"+
+					"Database";
 					toAppend+="</a>"
 
 				}
 
 				else if(alchEntry.disambiguated.opencyc){
 
-					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.opencyc+"\" class=\"list-group-item\">"+
-					alchEntry.disambiguated.opencyc.substring(7,20);
-
-					if(alchEntry.disambiguated.opencyc.length>20)
-						toAppend+="...";
+					toAppend+="<a href = \""+alchEntry.disambiguated.opencyc+"\" class=\"list-group-item\">"+
+					"Database";
 					toAppend+="</a>"
 
 				}
 
 				else if(alchEntry.disambiguated.yago){
 
-					toAppend+="<br>Database: <a href = \""+alchEntry.disambiguated.yago+"\" class=\"list-group-item\">"+
-					alchEntry.disambiguated.yago.substring(7,20);
-
-					if(alchEntry.disambiguated.yago.length>20)
-						toAppend+="...";
+					toAppend+="<a href = \""+alchEntry.disambiguated.yago+"\" class=\"list-group-item\">"+
+					"Database";
 					toAppend+="</a>"
 
 				}
