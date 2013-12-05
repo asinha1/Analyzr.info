@@ -308,7 +308,7 @@ function filter(typeToBeGraphed)
 			var toAppend="";
 
 			toAppend=
-            "<div class=\"panel panel-default\">" +
+            "<div class=\"box-panel panel-default\" max-height=\"20px\">" +
             "<div class=\"panel-heading\">" +
             "<h3 class=\"panel-title\"><b>" +alchEntry.text +"</b></h3>" +
             "</div> <!-- /panel-header -->" +

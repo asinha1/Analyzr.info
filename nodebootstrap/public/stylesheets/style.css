@@ -11,36 +11,36 @@ html, body {height: 100%;}
 
 .dataRow{
   color: #131413;
-  height: 220px;
+  height: 260px;
   width: 900px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .dataColA{
   float:left;
   margin-left: 30px;
-  height: 220px;
+  height: 260px;
   width: 200px;
 }
 
 .dataColB{
   float:left;
   margin-left: 10px;
-  height: 220px;
+  height: 260px;
   width: 200px;
 }
 
 .dataColC{
   float:left;
   margin-left: 10px;
-  height: 220px;
+  height: 260px;
   width: 200px;
 }
 
 .dataColD{
   float:left;
   margin-left: 10px;
-  height: 220px;
+  height: 260px;
   width: 200px;
 }
 
