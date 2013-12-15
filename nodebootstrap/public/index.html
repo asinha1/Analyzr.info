@@ -1,161 +1,121 @@
-<!DOCTYPE html><html>
-<head>
-  <title>Analyzr</title>
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script src="/bootstrap/js/bootstrap.js"></script>
-  <script src="/backbone/backbone-min.js"></script>
-  <script src="/javascripts/graph.js"></script>
-  <script src="/javascripts/tip.js"></script>
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-</head>
 
-<body>
-
-
-
-
-  <div id="topChunk">
-    <div class="container" id = "headerCont">
-      <div id="header">
-        <div class="logo">
-
-
-          <a href = "/"></a>
-
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="75px" height="75px">
-            <polygon points="37,0 0,75 75,75"
-            style="fill:#fff"/>
-            <polygon points="37,10 7,71 68,71" 
-            style="fill:#9d1f0f"/>
-            <polygon points="37,28 20.5,63 55,63" 
-            style="fill:#000"/>
-          </svg>
-          <font size=30 color="#9d1f0f">analyzr</font>
-
-        </div>
-
-        <div id="aboutdiv"><a href="/about">
-        <button class="redbtn" >About</button></a></div>
-      </div>
-    </div>
-    <div class="carousel slide vertical" id="homeCarousel" data-interval="false">
-      <div class="carousel-inner">
-       <div class="active item">
-        <div class="container" id="activeItemContainer">
-
-          <div id ="tagLine">
-            <h1>All the facts, none of the <b>bullshit.</b></h1>
-          </div>
-          <p>
-            Take the guesswork out of analyzing text. <br>
-            Whether it's a political article, tech review, or blog post, Analyzr graphs connotative information about the key subjects it finds in your text.
-          </p>
-          <center>
-            <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest();">
-              <div class="form-group">
-                <input type="text" class="form-control" id="urlIn" placeholder="Enter URL">
-              </div>
-              <button type="submit" class="redbtn">Analyz!</button>
-            </form> 
-
-          </center>
-        </div>
-          <center>
-            <div class="carousel-button">
-            <button  class="redbtn" href="#homeCarousel" data-slide="next" margin-bottom="10px">
-                <span class="glyphicon glyphicon-chevron-up"></span>
-                Check out trending articles
-            </button>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Analyzr</title>
+      <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="/stylesheets/style.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+      <script src="/bootstrap/js/bootstrap.js"></script>
+      <script src="/backbone/backbone-min.js"></script>
+      <script src="/javascripts/graph.js"></script>
+      <script src="/javascripts/tip.js"></script>
+      <script src="http://d3js.org/d3.v3.min.js"></script>
+   </head>
+   <body>
+      <div id="topChunk">
+         <div class="container" id = "headerCont">
+            <div id="header">
+               <div class="logo">
+                  <a href = "/"></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="75px" height="75px">
+                     <polygon points="37,0 0,75 75,75"
+                        style="fill:#fff"/>
+                     <polygon points="37,10 7,71 68,71" 
+                        style="fill:#9d1f0f"/>
+                     <polygon points="37,28 20.5,63 55,63" 
+                        style="fill:#000"/>
+                  </svg>
+                  analyzr
+               </div>
+               <div id="aboutdiv">
+                  <input type="button" class="redbtn" value="About" onclick="location.href='/about';">
+               </div>
             </div>
-          </center>
-
+         </div>
+         <div class="carousel slide vertical" id="homeCarousel" data-interval="false">
+            <div class="carousel-inner">
+               <div class="active item">
+                  <div class="container activeItemContainer">
+                     <div id ="tagLine">
+                        <h1>All the facts, none of the <b>bullshit.</b></h1>
+                     </div>
+                     <p>
+                        Take the guesswork out of analyzing text. <br>
+                        Whether it's a political article, tech review, or blog post, Analyzr graphs connotative information about the key subjects it finds in your text.
+                     </p>
+                     <div id = "urlFormContainer">
+                        <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest();">
+                           <div class="form-group">
+                              <input type="text" class="form-control" id="urlIn" placeholder="Enter URL">
+                           </div>
+                           <button type="submit" class="redbtn">Analyz!</button>
+                        </form>
+                     </div>
+                  </div>
+                     <div class="carousel-button center" >
+                        <a  class="redbtn center slidebtn" href="#homeCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-up"></span>
+                        Trending articles
+                        </a>
+                     </div>
+               </div>
+               <div class="item" id="trending">
+                  <div class="container activeItemContainer">
+                     <div id ="trendLeft"></div>
+                     <div id ="trendRight"></div>
+                  </div>
+                     <div class="carousel-button center">
+                        <a  class="redbtn center slidebtn" href="#homeCarousel" data-slide="prev" >
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                        Enter a URL
+                        </a>
+                     </div>
+               </div>
+            </div>
+         </div>
       </div>
-      <div class="item" id="trending">
+         <div id="tooltip" class="hidden"></div>
+         <div class = "container center">
+         <div id="graphContainer" class="center" >
+            <div id="graphTitle"></div>
+            <div id ="filterDiv" class="btn-group">
+            </div>
+            <div id="graph" class="center"></div>
+         </div>
+         <br><br><br>
+         <div id="allDataBlocks" class = "center">
+            <div class="dataRow">
+               <div id="bl0" class="dataColA dataBlock"></div>
+               <div id="bl1" class="dataColB dataBlock"></div>
+               <div id="bl2" class="dataColC dataBlock"></div>
+               <div id="bl3" class="dataColD dataBlock"></div>
+            </div>
+            <div class="dataRow">
+               <div id="bl4" class="dataColA dataBlock"></div>
+               <div id="bl5" class="dataColB dataBlock"></div>
+               <div id="bl6" class="dataColC dataBlock"></div>
+               <div id="bl7" class="dataColD dataBlock"></div>
+            </div>
+            <div class="dataRow">
+               <div id="bl8" class="dataColA dataBlock"></div>
+               <div id="bl9" class="dataColB dataBlock"></div>
+               <div id="bl10" class="dataColC dataBlock"></div>
+               <div id="bl11" class="dataColD dataBlock"></div>
+            </div>
+         </div>
+         </div>
+         <!--/allDataBlocks-->
+         <div class="footer">
 
-       <div class="container" id="activeItemContainer">
-          <center><br><br>Trending articles go here</center>
-        </div>
-        <center>
-        <div class="carousel-button">
-        <button  class="redbtn" href="#homeCarousel" data-slide="prev" margin-bottom="10px">
-                <span class="glyphicon glyphicon-chevron-down"></span>
-                Enter a URL
-        </button>
-        </div>
-        </center>
+            <h4>Copyright &copy; 2013 Aashish Sinha &amp; Brian Bergeron</h4>
 
-      </div>
-    </div>
-    
-
-  </div>
-
-</div>
-
-<center>
-
-
-  <div id="tooltip" class="hidden"></div>
-  <div id="graphContainer">
-    <div id="graphTitle"></div>
-
-    <div id ="filterDiv" class="btn-group">
-    </div>
-
-    <div id="graph"></div>
-  </div>
-
-  <br><br><br>
-
-  <div id="allDataBlocks">
-
-    <div class="dataRow">
-      <div id="bl0" class="dataColA dataBlock"></div>
-      <div id="bl1" class="dataColB dataBlock"></div>
-      <div id="bl2" class="dataColC dataBlock"></div>
-      <div id="bl3" class="dataColD dataBlock"></div>
-    </div>
-
-    <div class="dataRow">
-      <div id="bl4" class="dataColA dataBlock"></div>
-      <div id="bl5" class="dataColB dataBlock"></div>
-      <div id="bl6" class="dataColC dataBlock"></div>
-      <div id="bl7" class="dataColD dataBlock"></div>
-    </div>
-
-    <div class="dataRow">
-      <div id="bl8" class="dataColA dataBlock"></div>
-      <div id="bl9" class="dataColB dataBlock"></div>
-      <div id="bl10" class="dataColC dataBlock"></div>
-      <div id="bl11" class="dataColD dataBlock"></div>
-    </div>
-
-  </div><!--/allDataBlocks-->
-
-</center>
-
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-</body>
-
-
-<div class="footer">
-<center>
-<br>
-  <p color="#fff" >
-<h4>Copyright &copy; 2013 Aashish Sinha &amp; Brian Bergeron</h4>
-  </p>
-<br>
-  <a href="https://github.com/asinha1/Analyzr.info" title="Github Link">
-  <button class="redbtn">
-  See our Project on Github
-  </button>
-  </a>
-</center>
-</div>
-
+            <br>
+            <a class="redbtn" id="footerbtn" href="https://github.com/asinha1/Analyzr.info" title="Github Link">
+            View analyzr on Github
+            </a>
+         </div>
+   </body>
 
 </html>
