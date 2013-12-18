@@ -81,20 +81,26 @@
          <br>
          <form class="form-inline" role="form" name="examplesForm"
                  onsubmit="return linkRequest();">
-         <button type="submit" class="redbtn" 
-         id="urlIn" 
+         <div class="form-group">
+         <input type="text" class="form-control" id="urlIn" style="visibility:hidden"
          value="http://arstechnica.com/business/2013/11/half-an-operating-system-the-triumph-and-tragedy-of-os2/">
+         </div>
+         <button type="submit" class="redbtn">
          Example tech article
          </button>
          </form>
          <form class="form-inline" role="form" name="examplesForm"
                  onsubmit="return linkRequest();">
-         <button type="submit" class="redbtn" id="urlIn"
+         <div class="form-group">
+         <input type="text" class="form-control" id="urlIn" style="visibility:hidden"
          value="http://www.cnn.com/2013/12/14/world/asia/china-moon-landing/">
+         </div>
+         <button type="submit" class="redbtn">
          Example news article
          </button>
          </form>
-         <div id="graphContainer" class="center" >
+
+            <div id="graphContainer" class="center" >
             <div id="graphTitle"></div>
             <div id ="filterDiv" class="btn-group">
             </div>
