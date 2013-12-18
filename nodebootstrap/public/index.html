@@ -45,15 +45,32 @@
                         Whether it's a political article, tech review, or blog post, Analyzr graphs connotative information about the key subjects it finds in your text.
                      </p>
                      <div id = "urlFormContainer">
-                        <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest();">
+                        <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest(0);">
                            <div class="form-group">
                               <input type="text" class="form-control" id="urlIn"
 placeholder="Enter URL">
                            </div>
                            <button type="submit" class="redbtn">Analyz!</button>
                         </form>
-                     </div>
+                     
+         <h4>Not sure what to try? How about these examples?</h4>
+        
+          <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest(1);">
+          <input type="text" class="form-control" id="exampleURL1" 
+            style="visibility:hidden; width:120px" 
+            value="http://arstechnica.com/business/2013/11/half-an-operating-system-the-triumph-and-tragedy-of-os2/">
+          <button type="submit" class="redbtn">Example tech article</button>
+          </form>
+
+          <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest(2);">
+          <input type="text" class="form-control" id="exampleURL2" 
+            style="visibility:hidden;width:117px"
+            value="http://www.cnn.com/2013/12/14/world/asia/china-moon-landing/">
+          <button type="submit" class="redbtn">Example news article</button>
+          </form>
+          </div>
                   </div>
+<br><br><br>
                      <div class="carousel-button center" >
                         <a  class="redbtn center slidebtn" href="#homeCarousel" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-up"></span>
@@ -66,6 +83,7 @@ placeholder="Enter URL">
                      <div id ="trendLeft"></div>
                      <div id ="trendRight"></div>
                   </div>
+<br><br><br>
                      <div class="carousel-button center">
                         <a  class="redbtn center slidebtn" href="#homeCarousel" data-slide="prev" >
                         <span class="glyphicon glyphicon-chevron-down"></span>
@@ -78,15 +96,7 @@ placeholder="Enter URL">
       </div>
          <div id="tooltip" class="hidden"></div>
          <div class = "container center">
-         <h3>Not sure what to try? How about these examples?</h3>
-         <br>
-            
-          <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest();">
-          <div class="form-group">
-          <input type="text" class="form-control" id="urlIn" value="cnn.com">
-          </div>
-          <button type="submit" class="redbtn">Example tech article</button>
-          </form>
+
 
             <div id="graphContainer" class="center" >
             <div id="graphTitle"></div>

@@ -50,7 +50,7 @@ html, body {height: 100%;}
 
 #topChunk{
   min-width: 900px;
-  height: 370px;
+  height: 450px;
   background-color:#131413 ;
   margin-bottom: 50px;
 }
@@ -61,7 +61,7 @@ html, body {height: 100%;}
 }
 
 #homeCarousel{
-  height: 270px;
+  height: 380px;
 }
 
 

@@ -49,10 +49,17 @@ window.onload = function(){
 
 //gets called when user clicks ANALYZ
 //queries request for alchemy data (from our server "dijkstra")
-function linkRequest(){
+function linkRequest(ID){
 
-	var URL = document.getElementById("urlIn").value;
-    alert("URL is: " + URL);
+var textBoxID;
+    if(ID == 1)
+        textBoxID = "exampleURL1"
+    else if(ID == 2)
+        textBoxID = "exampleURL2"
+    else
+        textBoxID = "urlIn"
+
+	var URL = document.getElementById(textBoxID).value;
 	//post our own server
 	var jqxhr = $.post( "/", {data:URL},function() {
 	})
