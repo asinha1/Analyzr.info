@@ -52,7 +52,7 @@ window.onload = function(){
 function linkRequest(){
 
 	var URL = document.getElementById("urlIn").value;
-
+    alert("URL is: " + URL);
 	//post our own server
 	var jqxhr = $.post( "/", {data:URL},function() {
 	})
