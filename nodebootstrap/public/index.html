@@ -47,7 +47,8 @@
                      <div id = "urlFormContainer">
                         <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest();">
                            <div class="form-group">
-                              <input type="text" class="form-control" id="urlIn" placeholder="Enter URL">
+                              <input type="text" class="form-control" id="urlIn"
+placeholder="Enter URL">
                            </div>
                            <button type="submit" class="redbtn">Analyz!</button>
                         </form>
@@ -79,26 +80,13 @@
          <div class = "container center">
          <h3>Not sure what to try? How about these examples?</h3>
          <br>
-         <form class="form-inline" role="form" name="examplesForm"
-                 onsubmit="return linkRequest();">
-         <div class="form-group">
-         <input type="text" class="form-control" id="urlIn" style="visibility:hidden"
-         value="http://arstechnica.com/business/2013/11/half-an-operating-system-the-triumph-and-tragedy-of-os2/">
-         </div>
-         <button type="submit" class="redbtn">
-         Example tech article
-         </button>
-         </form>
-         <form class="form-inline" role="form" name="examplesForm"
-                 onsubmit="return linkRequest();">
-         <div class="form-group">
-         <input type="text" class="form-control" id="urlIn" style="visibility:hidden"
-         value="http://www.cnn.com/2013/12/14/world/asia/china-moon-landing/">
-         </div>
-         <button type="submit" class="redbtn">
-         Example news article
-         </button>
-         </form>
+            
+          <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest();">
+          <div class="form-group">
+          <input type="text" class="form-control" id="urlIn" value="cnn.com">
+          </div>
+          <button type="submit" class="redbtn">Example tech article</button>
+          </form>
 
             <div id="graphContainer" class="center" >
             <div id="graphTitle"></div>
