@@ -14,16 +14,11 @@
 
 /* Needed Node variables */
  var express = require('express');
- var routes = require('./routes');
- var about = require('./routes/about');
- var user = require('./routes/user');
- var contact = require('./routes/contact');
  var http = require('http');
  var path = require('path');
  var fs = require('fs');
 
 /* Stuff for mongoose */
-var request = require('request');
 var mongoose = require("mongoose");
 
 /* Connect to mongodb on Aashish's AWS */ 
