@@ -17,4 +17,4 @@ Authors
 -------
 
 * Aashish Sinha
-* Brian Bergeron --- [github.com/bergeron](http://github.com/bergeron) --- [bergeron.im](http://bergeron.im)
+* Brian Bergeron -- [github.com/bergeron](http://github.com/bergeron) -- [bergeron.im](http://bergeron.im)
