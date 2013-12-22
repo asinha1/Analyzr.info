@@ -206,12 +206,43 @@ div.logo a{
   height: 150px; /* .push must be the same height as .footer */
 }
 
-.footer h4{
-  width: 420px;
-  display:block;
+.footer h3{
+  line-height: 20px;
+  font-size: 17px;
+  display: block;
+  width: 145px;
+  min-width: 145px;
   margin: 0 auto;
 
+
 }
+
+.footer h4{
+  font-size: 20px;
+  display: block;
+  width: 295px;
+  min-width: 295px;
+  margin: 0 auto;
+
+
+}
+
+#alch{
+
+  width: 280px;
+  min-width: 280px;
+  float: left;
+  display: block;
+  padding-left: 10px;
+
+}
+
+#alch a{
+
+ color: #ccc;
+
+}
+
 
 .redbar{
   background-color: #9d1f0f;
@@ -252,7 +283,7 @@ div.logo a{
 #footerbtn{
   display:block;
   margin: 0 auto;
-  width: 300px;
+  width: 200px;
 
 }
 
