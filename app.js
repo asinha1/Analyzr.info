@@ -65,20 +65,13 @@ app.use(express.bodyParser());
 app.use(express.compress());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-app.get('/', function(req,res){
-  res.sendfile('public/index.html');
-});
-
-app.get('/about', function(req,res){
-  res.sendfile('public/about.html');
-});
 
 app.post('/',  sendAlchData);
 
