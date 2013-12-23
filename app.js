@@ -73,7 +73,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.post('/',  sendAlchData);
+app.post('/artReq',  sendAlchData);
 
 
 http.createServer(app).listen(app.get('port'), 

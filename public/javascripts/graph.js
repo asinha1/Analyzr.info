@@ -61,7 +61,7 @@ var textBoxID;
 
 	var URL = document.getElementById(textBoxID).value;
 	//post our own server
-	var jqxhr = $.post( "/", {data:URL},function() {
+	var jqxhr = $.post( "/artReq", {data:URL},function() {
 	})
 		//CALLBACK
 		.done(function(data) {
