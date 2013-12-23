@@ -4,6 +4,8 @@
    <head>
       <meta charset="UTF-8">
       <title>Analyzr</title>
+      <link rel="icon" type="image/png" 
+      href="favicon.ico">
       <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
       <link rel="stylesheet" href="stylesheets/style.css">
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -17,7 +19,7 @@
          <div class="container" id = "headerCont">
             <div id="header">
                <div class="logo">
-                  <a href = "/"></a>
+                  <a href = ""></a>
                   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="75px" height="75px">
                      <polygon points="37,0 0,75 75,75"
                         style="fill:#fff"/>
@@ -29,7 +31,7 @@
                   analyzr
                </div>
                <div id="aboutdiv">
-                  <input type="button" class="redbtn" value="About" onclick="location.href='/about.html';">
+                  <input type="button" class="redbtn" value="About" onclick="location.href='about.html';">
                </div>
             </div>
          </div>
@@ -47,30 +49,25 @@
                      <div id = "urlFormContainer">
                         <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest(0);">
                            <div class="form-group">
-                              <input type="text" class="form-control" id="urlIn"
-placeholder="Enter URL">
+                              <input type="text" class="form-control" id="urlIn" placeholder="Enter URL">
                            </div>
                            <button type="submit" class="redbtn">Analyz!</button>
                         </form>
-                     
-         <h4>Not sure what to try? How about these examples?</h4>
-        
-          <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest(1);">
-          <input type="text" class="form-control" id="exampleURL1" 
-            style="visibility:hidden; width:120px" 
-            value="http://arstechnica.com/business/2013/11/half-an-operating-system-the-triumph-and-tragedy-of-os2/">
-          <button type="submit" class="redbtn">Example tech article</button>
-          </form>
+                     </div>
 
-          <form class="form-inline" role="form" name="urlInForm"    onsubmit="return linkRequest(2);">
-          <input type="text" class="form-control" id="exampleURL2" 
-            style="visibility:hidden;width:117px"
-            value="http://www.cnn.com/2013/12/14/world/asia/china-moon-landing/">
-          <button type="submit" class="redbtn">Example news article</button>
-          </form>
-          </div>
+
+               <div class = "exbtns center">
+
+                Or try these example articles:<br>
+
+                 <button type="submit" class="redbtn exbtn" onclick="linkRequest(1);">Example tech article</button>
+                  
+             
+                <button type="submit" class="redbtn exbtn" onclick="linkRequest(2);">Example news article</button>
+               </div>
+
+
                   </div>
-<br><br><br>
                      <div class="carousel-button center" >
                         <a  class="redbtn center slidebtn" href="#homeCarousel" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-up"></span>
@@ -80,10 +77,12 @@ placeholder="Enter URL">
                </div>
                <div class="item" id="trending">
                   <div class="container activeItemContainer">
-                     <div id ="trendLeft"></div>
+                     <div id ="trendLeft">
+                        
+                        <br>Coming soon to a web browser near you...
+                     </div>
                      <div id ="trendRight"></div>
                   </div>
-<br><br><br>
                      <div class="carousel-button center">
                         <a  class="redbtn center slidebtn" href="#homeCarousel" data-slide="prev" >
                         <span class="glyphicon glyphicon-chevron-down"></span>
@@ -96,10 +95,9 @@ placeholder="Enter URL">
       </div>
          <div id="tooltip" class="hidden"></div>
          <div class = "container center">
-
-
-            <div id="graphContainer" class="center" >
+         <div id="graphContainer" class="center" >
             <div id="graphTitle"></div>
+            <div id="filtertitle"></div>
             <div id ="filterDiv" class="btn-group">
             </div>
             <div id="graph" class="center"></div>
@@ -128,9 +126,10 @@ placeholder="Enter URL">
          </div>
          <!--/allDataBlocks-->
          <div class="footer">
+
             <div id = "alch">
                <a href ="http://www.alchemyapi.com "> 
-               <img src="http://www.alchemyapi.com/sites/default/files/alchemyAPI.png"></a>
+               <img src="http://www.alchemyapi.com/sites/default/files/alchemyAPI.png" alt="alchemy"></a>
                <br><a href ="http://www.alchemyapi.com "> Text Analysis by AlchemyAPI</a>
             </div>
 
@@ -138,7 +137,7 @@ placeholder="Enter URL">
 
             <br>
             <a class="redbtn" id="footerbtn" href="https://github.com/asinha1/Analyzr.info" title="Github Link">
-            <img src = "github.png">
+            <img src = "github.png" alt="gitHub">
             View analyzr on Github
             </a>
          </div>

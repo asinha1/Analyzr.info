@@ -50,18 +50,18 @@ html, body {height: 100%;}
 
 #topChunk{
   min-width: 900px;
-  height: 450px;
+  height: 430px;
   background-color:#131413 ;
   margin-bottom: 50px;
 }
 
 .activeItemContainer{
 
-    height: 235px;
+    height: 300px;
 }
 
 #homeCarousel{
-  height: 380px;
+  height: 330px;
 }
 
 
@@ -88,6 +88,16 @@ html, body {height: 100%;}
 
 #graphTitle{
   font-size: 20px;
+}
+
+#filtertitle{
+  font-size: 20px;
+}
+
+#graphTitle h3{
+
+  font-size: 13px;
+  display: inline;
 }
 
 #header{
@@ -272,12 +282,39 @@ div.logo a{
 
 }
 
+.exbtns{
+
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  width: 400px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.exbtns button{
+
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+
+  font-size: 14px;
+}
+
 .slidebtn{
 
+  color: black;
+  background-color: white;
   padding-top: 5px;
   height: 40px;
 
 
+}
+
+.slidebtn:hover{
+
+  color: #9d1f0f;
 }
 
 #footerbtn{

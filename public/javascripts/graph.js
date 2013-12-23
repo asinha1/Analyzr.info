@@ -51,17 +51,20 @@ window.onload = function(){
 //queries request for alchemy data (from our server "dijkstra")
 function linkRequest(ID){
 
-var textBoxID;
-    if(ID == 1)
-        textBoxID = "exampleURL1"
-    else if(ID == 2)
-        textBoxID = "exampleURL2"
-    else
-        textBoxID = "urlIn"
+	var URL;
 
-	var URL = document.getElementById(textBoxID).value;
+    if(ID == 1)
+        URL = "http://arstechnica.com/business/2013/11/half-an-operating-system-the-triumph-and-tragedy-of-os2/";
+    else if(ID == 2)
+        URL = "http://edition.cnn.com/2013/12/14/world/asia/china-moon-landing/?hpt=ias_mid";
+    else
+		URL = document.getElementById("urlIn").value;
+
+
+	document.getElementById("graphTitle").innerHTML="URL: <h3><u>"+URL+"</u></h3><br>";
+	
 	//post our own server
-	var jqxhr = $.post( "/artReq", {data:URL},function() {
+	var jqxhr = $.post( "/artReq/", {data:URL},function() {
 	})
 		//CALLBACK
 		.done(function(data) {
@@ -295,8 +298,8 @@ function filter(typeToBeGraphed)
 {
 	//set Title
 	var filteredEntries = typeFilter[typeToBeGraphed];
-	document.getElementById("graphTitle").innerHTML=
-		"Graphing: "+typeToBeGraphed.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1");
+	document.getElementById("filtertitle").innerHTML=
+		"Graphing: <u>"+typeToBeGraphed.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")+"</u>";
 
 	//graph all entries
 	graphit(filteredEntries);
