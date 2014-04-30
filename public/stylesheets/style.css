@@ -1,9 +1,16 @@
 
 html, body {height: 100%;}
 #allDataBlocks{
+
   min-width: 900px;
   width: 900px;
   height: 600px;
+}
+
+#allDataBlocks h2{
+
+  font-size: 25px;
+  text-align: center;
 }
 
 
